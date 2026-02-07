@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import LandingPage from "./pages/LandingPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import { useAuthStore } from "./store/useAuthStore";
@@ -38,7 +39,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={authUser ? <HomePage /> : <Navigate to="/login" />}
+            element={authUser ? <HomePage /> : <LandingPage />}
           />
         </Route>
         <Route
