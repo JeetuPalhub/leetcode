@@ -8,7 +8,7 @@ import PlaylistProfile from "../components/PlaylistProfile";
 
 const Profile = () => {
   const { authUser } = useAuthStore();
-  
+
   return (
     <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center py-10 px-4 md:px-8 w-full">
       {/* Header with back button */}
@@ -20,7 +20,7 @@ const Profile = () => {
           <h1 className="text-3xl font-bold text-primary">Profile</h1>
         </div>
       </div>
-      
+
       <div className="w-full max-w-4xl mx-auto">
         {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl">
@@ -37,16 +37,16 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-              
+
               {/* Name and Role Badge */}
               <div className="text-center md:text-left">
                 <h2 className="text-2xl font-bold">{authUser.name}</h2>
                 <div className="badge badge-primary mt-2">{authUser.role}</div>
               </div>
             </div>
-            
+
             <div className="divider"></div>
-            
+
             {/* User Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Email */}
@@ -57,7 +57,7 @@ const Profile = () => {
                 <div className="stat-title">Email</div>
                 <div className="stat-value text-lg break-all">{authUser.email}</div>
               </div>
-              
+
               {/* User ID */}
               <div className="stat bg-base-200 rounded-box">
                 <div className="stat-figure text-primary">
@@ -66,7 +66,7 @@ const Profile = () => {
                 <div className="stat-title">User ID</div>
                 <div className="stat-value text-sm break-all">{authUser.id}</div>
               </div>
-              
+
               {/* Role Status */}
               <div className="stat bg-base-200 rounded-box">
                 <div className="stat-figure text-primary">
@@ -78,7 +78,7 @@ const Profile = () => {
                   {authUser.role === "ADMIN" ? "Full system access" : "Limited access"}
                 </div>
               </div>
-              
+
               {/* Profile Image Status */}
               <div className="stat bg-base-200 rounded-box">
                 <div className="stat-figure text-primary">
@@ -93,7 +93,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Action Buttons */}
             <div className="card-actions justify-end mt-6">
               <button className="btn btn-outline btn-primary">Edit Profile</button>
@@ -101,18 +101,15 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        
-     
+
+
       </div>
-<div>
+      <div className="w-full max-w-6xl mx-auto space-y-6 px-4 pb-8">
+        <ProfileSubmission />
+        <ProblemSolvedByUser />
+        <PlaylistProfile />
+      </div>
 
-<ProfileSubmission/>
-     
-      <ProblemSolvedByUser/>
-
-      <PlaylistProfile/>
-</div>
-      
       {/* PLaylist created by the user and their actions */}
     </div>
   );
