@@ -34,6 +34,8 @@ model User {
   submissions Submission[]       // Submissions made by this user
   solvedProblems ProblemSolved[] // Problems solved by this user
   playlists   Playlist[]         // Playlists created by this user
+  likes       ProblemLike[]      // Problems liked by this user
+  bookmarks   ProblemBookmark[]  // Problems bookmarked for revision
 
   @@index([role])
 }
@@ -70,6 +72,8 @@ model Problem {
   submissions Submission[] // Submissions for this problem
   solvedBy    ProblemSolved[] // Users who have solved this problem
   problemsPlaylists   ProblemInPlaylist[]   // Playlists that include this problem
+  likes       ProblemLike[]      // Users who liked this problem
+  bookmarks   ProblemBookmark[]  // Users who bookmarked this problem
 
   @@index([difficulty])
 }
@@ -160,4 +164,33 @@ model ProblemInPlaylist {
   problem  Problem  @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
   @@unique([playlistId, problemId]) // Ensure no duplicate problems in the same playlist
+}
+
+// Like/Unlike problems
+model ProblemLike {
+  id        String   @id @default(uuid())
+  userId    String
+  problemId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
+  @@index([problemId])
+}
+
+// Bookmark/Save problems for revision
+model ProblemBookmark {
+  id        String   @id @default(uuid())
+  userId    String
+  problemId String
+  note      String?  // Optional note for revision
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
+  @@index([userId])
 }

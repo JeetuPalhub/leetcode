@@ -6,6 +6,7 @@ import {
   MessageSquare,
   Lightbulb,
   Bookmark,
+  BookmarkCheck,
   Share2,
   Clock,
   ChevronRight,
@@ -14,6 +15,8 @@ import {
   Code2,
   Users,
   ThumbsUp,
+  Heart,
+  HeartOff,
   Home,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
@@ -21,6 +24,7 @@ import { useProblemStore } from "../store/useProblemStore";
 import { getLanguageId } from "../libs/utils";
 import { useExecutionStore } from "../store/useExecution";
 import { useSubmissionStore } from "../store/useSubmissionStore";
+import { useInteractionStore } from "../store/useInteractionStore";
 import Submission from "../components/Submission";
 import SubmissionsList from "../components/SubmissionList";
 
@@ -28,10 +32,10 @@ const ProblemPage = () => {
   const { id } = useParams();
   const { getProblemById, problem, isProblemLoading } = useProblemStore();
   const { submission: submissions, isLoading: isSubmissionsLoading, getSubmissionForProblem, getSubmissionCountForProblem, submissionCount } = useSubmissionStore();
+  const { interactionStatus, getInteractionStatus, likeProblem, unlikeProblem, bookmarkProblem, removeBookmark } = useInteractionStore();
   const [code, setCode] = useState("");
   const [activeTab, setActiveTab] = useState("description");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const [testCases, setTestCases] = useState([]);
 
   const { executeCode, submission, isExecuting } = useExecutionStore();
@@ -39,7 +43,7 @@ const ProblemPage = () => {
   useEffect(() => {
     getProblemById(id);
     getSubmissionCountForProblem(id);
-
+    getInteractionStatus(id);
   }, [id]);
 
   useEffect(() => {
@@ -195,12 +199,21 @@ const ProblemPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex-none gap-4">
+        <div className="flex-none gap-2">
           <button
-            className={`btn btn-ghost btn-circle ${isBookmarked ? 'text-primary' : ''}`}
-            onClick={() => setIsBookmarked(!isBookmarked)}
+            className={`btn btn-ghost btn-circle ${interactionStatus?.isLiked ? 'text-error' : ''}`}
+            onClick={() => interactionStatus?.isLiked ? unlikeProblem(id) : likeProblem(id)}
+            title={interactionStatus?.isLiked ? "Unlike" : "Like"}
           >
-            <Bookmark className="w-5 h-5" />
+            {interactionStatus?.isLiked ? <Heart className="w-5 h-5 fill-current" /> : <Heart className="w-5 h-5" />}
+          </button>
+          <span className="text-sm">{interactionStatus?.likeCount || 0}</span>
+          <button
+            className={`btn btn-ghost btn-circle ${interactionStatus?.isBookmarked ? 'text-primary' : ''}`}
+            onClick={() => interactionStatus?.isBookmarked ? removeBookmark(id) : bookmarkProblem(id)}
+            title={interactionStatus?.isBookmarked ? "Remove Bookmark" : "Bookmark for Revision"}
+          >
+            {interactionStatus?.isBookmarked ? <BookmarkCheck className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
           </button>
           <button className="btn btn-ghost btn-circle">
             <Share2 className="w-5 h-5" />

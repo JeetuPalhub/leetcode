@@ -53,6 +53,16 @@ export type Playlist = $Result.DefaultSelection<Prisma.$PlaylistPayload>
  * 
  */
 export type ProblemInPlaylist = $Result.DefaultSelection<Prisma.$ProblemInPlaylistPayload>
+/**
+ * Model ProblemLike
+ * 
+ */
+export type ProblemLike = $Result.DefaultSelection<Prisma.$ProblemLikePayload>
+/**
+ * Model ProblemBookmark
+ * 
+ */
+export type ProblemBookmark = $Result.DefaultSelection<Prisma.$ProblemBookmarkPayload>
 
 /**
  * Enums
@@ -288,6 +298,26 @@ export class PrismaClient<
     * ```
     */
   get problemInPlaylist(): Prisma.ProblemInPlaylistDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.problemLike`: Exposes CRUD operations for the **ProblemLike** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProblemLikes
+    * const problemLikes = await prisma.problemLike.findMany()
+    * ```
+    */
+  get problemLike(): Prisma.ProblemLikeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.problemBookmark`: Exposes CRUD operations for the **ProblemBookmark** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProblemBookmarks
+    * const problemBookmarks = await prisma.problemBookmark.findMany()
+    * ```
+    */
+  get problemBookmark(): Prisma.ProblemBookmarkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -735,7 +765,9 @@ export namespace Prisma {
     TestCaseResult: 'TestCaseResult',
     ProblemSolved: 'ProblemSolved',
     Playlist: 'Playlist',
-    ProblemInPlaylist: 'ProblemInPlaylist'
+    ProblemInPlaylist: 'ProblemInPlaylist',
+    ProblemLike: 'ProblemLike',
+    ProblemBookmark: 'ProblemBookmark'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -754,7 +786,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "tokenBlacklist" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "playlist" | "problemInPlaylist"
+      modelProps: "user" | "tokenBlacklist" | "problem" | "submission" | "testCaseResult" | "problemSolved" | "playlist" | "problemInPlaylist" | "problemLike" | "problemBookmark"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1350,6 +1382,154 @@ export namespace Prisma {
           }
         }
       }
+      ProblemLike: {
+        payload: Prisma.$ProblemLikePayload<ExtArgs>
+        fields: Prisma.ProblemLikeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProblemLikeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProblemLikeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          findFirst: {
+            args: Prisma.ProblemLikeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProblemLikeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          findMany: {
+            args: Prisma.ProblemLikeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>[]
+          }
+          create: {
+            args: Prisma.ProblemLikeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          createMany: {
+            args: Prisma.ProblemLikeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProblemLikeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>[]
+          }
+          delete: {
+            args: Prisma.ProblemLikeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          update: {
+            args: Prisma.ProblemLikeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProblemLikeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProblemLikeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProblemLikeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProblemLikeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemLikePayload>
+          }
+          aggregate: {
+            args: Prisma.ProblemLikeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProblemLike>
+          }
+          groupBy: {
+            args: Prisma.ProblemLikeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProblemLikeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProblemLikeCountArgs<ExtArgs>
+            result: $Utils.Optional<ProblemLikeCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProblemBookmark: {
+        payload: Prisma.$ProblemBookmarkPayload<ExtArgs>
+        fields: Prisma.ProblemBookmarkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProblemBookmarkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProblemBookmarkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          findFirst: {
+            args: Prisma.ProblemBookmarkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProblemBookmarkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          findMany: {
+            args: Prisma.ProblemBookmarkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>[]
+          }
+          create: {
+            args: Prisma.ProblemBookmarkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          createMany: {
+            args: Prisma.ProblemBookmarkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProblemBookmarkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>[]
+          }
+          delete: {
+            args: Prisma.ProblemBookmarkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          update: {
+            args: Prisma.ProblemBookmarkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProblemBookmarkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProblemBookmarkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProblemBookmarkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProblemBookmarkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProblemBookmarkPayload>
+          }
+          aggregate: {
+            args: Prisma.ProblemBookmarkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProblemBookmark>
+          }
+          groupBy: {
+            args: Prisma.ProblemBookmarkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProblemBookmarkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProblemBookmarkCountArgs<ExtArgs>
+            result: $Utils.Optional<ProblemBookmarkCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1442,6 +1622,8 @@ export namespace Prisma {
     problemSolved?: ProblemSolvedOmit
     playlist?: PlaylistOmit
     problemInPlaylist?: ProblemInPlaylistOmit
+    problemLike?: ProblemLikeOmit
+    problemBookmark?: ProblemBookmarkOmit
   }
 
   /* Types for Logging */
@@ -1540,6 +1722,8 @@ export namespace Prisma {
     submissions: number
     solvedProblems: number
     playlists: number
+    likes: number
+    bookmarks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1547,6 +1731,8 @@ export namespace Prisma {
     submissions?: boolean | UserCountOutputTypeCountSubmissionsArgs
     solvedProblems?: boolean | UserCountOutputTypeCountSolvedProblemsArgs
     playlists?: boolean | UserCountOutputTypeCountPlaylistsArgs
+    likes?: boolean | UserCountOutputTypeCountLikesArgs
+    bookmarks?: boolean | UserCountOutputTypeCountBookmarksArgs
   }
 
   // Custom InputTypes
@@ -1588,6 +1774,20 @@ export namespace Prisma {
     where?: PlaylistWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemLikeWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemBookmarkWhereInput
+  }
+
 
   /**
    * Count Type ProblemCountOutputType
@@ -1597,12 +1797,16 @@ export namespace Prisma {
     submissions: number
     solvedBy: number
     problemsPlaylists: number
+    likes: number
+    bookmarks: number
   }
 
   export type ProblemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submissions?: boolean | ProblemCountOutputTypeCountSubmissionsArgs
     solvedBy?: boolean | ProblemCountOutputTypeCountSolvedByArgs
     problemsPlaylists?: boolean | ProblemCountOutputTypeCountProblemsPlaylistsArgs
+    likes?: boolean | ProblemCountOutputTypeCountLikesArgs
+    bookmarks?: boolean | ProblemCountOutputTypeCountBookmarksArgs
   }
 
   // Custom InputTypes
@@ -1635,6 +1839,20 @@ export namespace Prisma {
    */
   export type ProblemCountOutputTypeCountProblemsPlaylistsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProblemInPlaylistWhereInput
+  }
+
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemLikeWhereInput
+  }
+
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeCountBookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemBookmarkWhereInput
   }
 
 
@@ -1896,6 +2114,8 @@ export namespace Prisma {
     submissions?: boolean | User$submissionsArgs<ExtArgs>
     solvedProblems?: boolean | User$solvedProblemsArgs<ExtArgs>
     playlists?: boolean | User$playlistsArgs<ExtArgs>
+    likes?: boolean | User$likesArgs<ExtArgs>
+    bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1938,6 +2158,8 @@ export namespace Prisma {
     submissions?: boolean | User$submissionsArgs<ExtArgs>
     solvedProblems?: boolean | User$solvedProblemsArgs<ExtArgs>
     playlists?: boolean | User$playlistsArgs<ExtArgs>
+    likes?: boolean | User$likesArgs<ExtArgs>
+    bookmarks?: boolean | User$bookmarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1950,6 +2172,8 @@ export namespace Prisma {
       submissions: Prisma.$SubmissionPayload<ExtArgs>[]
       solvedProblems: Prisma.$ProblemSolvedPayload<ExtArgs>[]
       playlists: Prisma.$PlaylistPayload<ExtArgs>[]
+      likes: Prisma.$ProblemLikePayload<ExtArgs>[]
+      bookmarks: Prisma.$ProblemBookmarkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2358,6 +2582,8 @@ export namespace Prisma {
     submissions<T extends User$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     solvedProblems<T extends User$solvedProblemsArgs<ExtArgs> = {}>(args?: Subset<T, User$solvedProblemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     playlists<T extends User$playlistsArgs<ExtArgs> = {}>(args?: Subset<T, User$playlistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likes<T extends User$likesArgs<ExtArgs> = {}>(args?: Subset<T, User$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmarks<T extends User$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2876,6 +3102,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PlaylistScalarFieldEnum | PlaylistScalarFieldEnum[]
+  }
+
+  /**
+   * User.likes
+   */
+  export type User$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    where?: ProblemLikeWhereInput
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    cursor?: ProblemLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemLikeScalarFieldEnum | ProblemLikeScalarFieldEnum[]
+  }
+
+  /**
+   * User.bookmarks
+   */
+  export type User$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    where?: ProblemBookmarkWhereInput
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    cursor?: ProblemBookmarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemBookmarkScalarFieldEnum | ProblemBookmarkScalarFieldEnum[]
   }
 
   /**
@@ -4107,6 +4381,8 @@ export namespace Prisma {
     submissions?: boolean | Problem$submissionsArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problem$problemsPlaylistsArgs<ExtArgs>
+    likes?: boolean | Problem$likesArgs<ExtArgs>
+    bookmarks?: boolean | Problem$bookmarksArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
@@ -4172,6 +4448,8 @@ export namespace Prisma {
     submissions?: boolean | Problem$submissionsArgs<ExtArgs>
     solvedBy?: boolean | Problem$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problem$problemsPlaylistsArgs<ExtArgs>
+    likes?: boolean | Problem$likesArgs<ExtArgs>
+    bookmarks?: boolean | Problem$bookmarksArgs<ExtArgs>
     _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4188,6 +4466,8 @@ export namespace Prisma {
       submissions: Prisma.$SubmissionPayload<ExtArgs>[]
       solvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
       problemsPlaylists: Prisma.$ProblemInPlaylistPayload<ExtArgs>[]
+      likes: Prisma.$ProblemLikePayload<ExtArgs>[]
+      bookmarks: Prisma.$ProblemBookmarkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4603,6 +4883,8 @@ export namespace Prisma {
     submissions<T extends Problem$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     solvedBy<T extends Problem$solvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problem$solvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     problemsPlaylists<T extends Problem$problemsPlaylistsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$problemsPlaylistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likes<T extends Problem$likesArgs<ExtArgs> = {}>(args?: Subset<T, Problem$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmarks<T extends Problem$bookmarksArgs<ExtArgs> = {}>(args?: Subset<T, Problem$bookmarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5112,6 +5394,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProblemInPlaylistScalarFieldEnum | ProblemInPlaylistScalarFieldEnum[]
+  }
+
+  /**
+   * Problem.likes
+   */
+  export type Problem$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    where?: ProblemLikeWhereInput
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    cursor?: ProblemLikeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemLikeScalarFieldEnum | ProblemLikeScalarFieldEnum[]
+  }
+
+  /**
+   * Problem.bookmarks
+   */
+  export type Problem$bookmarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    where?: ProblemBookmarkWhereInput
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    cursor?: ProblemBookmarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProblemBookmarkScalarFieldEnum | ProblemBookmarkScalarFieldEnum[]
   }
 
   /**
@@ -10720,6 +11050,2125 @@ export namespace Prisma {
 
 
   /**
+   * Model ProblemLike
+   */
+
+  export type AggregateProblemLike = {
+    _count: ProblemLikeCountAggregateOutputType | null
+    _min: ProblemLikeMinAggregateOutputType | null
+    _max: ProblemLikeMaxAggregateOutputType | null
+  }
+
+  export type ProblemLikeMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    problemId: string | null
+    createdAt: Date | null
+  }
+
+  export type ProblemLikeMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    problemId: string | null
+    createdAt: Date | null
+  }
+
+  export type ProblemLikeCountAggregateOutputType = {
+    id: number
+    userId: number
+    problemId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProblemLikeMinAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    createdAt?: true
+  }
+
+  export type ProblemLikeMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    createdAt?: true
+  }
+
+  export type ProblemLikeCountAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProblemLikeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemLike to aggregate.
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemLikes to fetch.
+     */
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProblemLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProblemLikes
+    **/
+    _count?: true | ProblemLikeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProblemLikeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProblemLikeMaxAggregateInputType
+  }
+
+  export type GetProblemLikeAggregateType<T extends ProblemLikeAggregateArgs> = {
+        [P in keyof T & keyof AggregateProblemLike]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProblemLike[P]>
+      : GetScalarType<T[P], AggregateProblemLike[P]>
+  }
+
+
+
+
+  export type ProblemLikeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemLikeWhereInput
+    orderBy?: ProblemLikeOrderByWithAggregationInput | ProblemLikeOrderByWithAggregationInput[]
+    by: ProblemLikeScalarFieldEnum[] | ProblemLikeScalarFieldEnum
+    having?: ProblemLikeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProblemLikeCountAggregateInputType | true
+    _min?: ProblemLikeMinAggregateInputType
+    _max?: ProblemLikeMaxAggregateInputType
+  }
+
+  export type ProblemLikeGroupByOutputType = {
+    id: string
+    userId: string
+    problemId: string
+    createdAt: Date
+    _count: ProblemLikeCountAggregateOutputType | null
+    _min: ProblemLikeMinAggregateOutputType | null
+    _max: ProblemLikeMaxAggregateOutputType | null
+  }
+
+  type GetProblemLikeGroupByPayload<T extends ProblemLikeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProblemLikeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProblemLikeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProblemLikeGroupByOutputType[P]>
+            : GetScalarType<T[P], ProblemLikeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProblemLikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemLike"]>
+
+  export type ProblemLikeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemLike"]>
+
+  export type ProblemLikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemLike"]>
+
+  export type ProblemLikeSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProblemLikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "createdAt", ExtArgs["result"]["problemLike"]>
+  export type ProblemLikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemLikeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemLikeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+
+  export type $ProblemLikePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProblemLike"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      problem: Prisma.$ProblemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      problemId: string
+      createdAt: Date
+    }, ExtArgs["result"]["problemLike"]>
+    composites: {}
+  }
+
+  type ProblemLikeGetPayload<S extends boolean | null | undefined | ProblemLikeDefaultArgs> = $Result.GetResult<Prisma.$ProblemLikePayload, S>
+
+  type ProblemLikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProblemLikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProblemLikeCountAggregateInputType | true
+    }
+
+  export interface ProblemLikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProblemLike'], meta: { name: 'ProblemLike' } }
+    /**
+     * Find zero or one ProblemLike that matches the filter.
+     * @param {ProblemLikeFindUniqueArgs} args - Arguments to find a ProblemLike
+     * @example
+     * // Get one ProblemLike
+     * const problemLike = await prisma.problemLike.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProblemLikeFindUniqueArgs>(args: SelectSubset<T, ProblemLikeFindUniqueArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProblemLike that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProblemLikeFindUniqueOrThrowArgs} args - Arguments to find a ProblemLike
+     * @example
+     * // Get one ProblemLike
+     * const problemLike = await prisma.problemLike.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProblemLikeFindUniqueOrThrowArgs>(args: SelectSubset<T, ProblemLikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemLike that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeFindFirstArgs} args - Arguments to find a ProblemLike
+     * @example
+     * // Get one ProblemLike
+     * const problemLike = await prisma.problemLike.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProblemLikeFindFirstArgs>(args?: SelectSubset<T, ProblemLikeFindFirstArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemLike that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeFindFirstOrThrowArgs} args - Arguments to find a ProblemLike
+     * @example
+     * // Get one ProblemLike
+     * const problemLike = await prisma.problemLike.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProblemLikeFindFirstOrThrowArgs>(args?: SelectSubset<T, ProblemLikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProblemLikes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProblemLikes
+     * const problemLikes = await prisma.problemLike.findMany()
+     * 
+     * // Get first 10 ProblemLikes
+     * const problemLikes = await prisma.problemLike.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const problemLikeWithIdOnly = await prisma.problemLike.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProblemLikeFindManyArgs>(args?: SelectSubset<T, ProblemLikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProblemLike.
+     * @param {ProblemLikeCreateArgs} args - Arguments to create a ProblemLike.
+     * @example
+     * // Create one ProblemLike
+     * const ProblemLike = await prisma.problemLike.create({
+     *   data: {
+     *     // ... data to create a ProblemLike
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProblemLikeCreateArgs>(args: SelectSubset<T, ProblemLikeCreateArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProblemLikes.
+     * @param {ProblemLikeCreateManyArgs} args - Arguments to create many ProblemLikes.
+     * @example
+     * // Create many ProblemLikes
+     * const problemLike = await prisma.problemLike.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProblemLikeCreateManyArgs>(args?: SelectSubset<T, ProblemLikeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProblemLikes and returns the data saved in the database.
+     * @param {ProblemLikeCreateManyAndReturnArgs} args - Arguments to create many ProblemLikes.
+     * @example
+     * // Create many ProblemLikes
+     * const problemLike = await prisma.problemLike.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProblemLikes and only return the `id`
+     * const problemLikeWithIdOnly = await prisma.problemLike.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProblemLikeCreateManyAndReturnArgs>(args?: SelectSubset<T, ProblemLikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProblemLike.
+     * @param {ProblemLikeDeleteArgs} args - Arguments to delete one ProblemLike.
+     * @example
+     * // Delete one ProblemLike
+     * const ProblemLike = await prisma.problemLike.delete({
+     *   where: {
+     *     // ... filter to delete one ProblemLike
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProblemLikeDeleteArgs>(args: SelectSubset<T, ProblemLikeDeleteArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProblemLike.
+     * @param {ProblemLikeUpdateArgs} args - Arguments to update one ProblemLike.
+     * @example
+     * // Update one ProblemLike
+     * const problemLike = await prisma.problemLike.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProblemLikeUpdateArgs>(args: SelectSubset<T, ProblemLikeUpdateArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProblemLikes.
+     * @param {ProblemLikeDeleteManyArgs} args - Arguments to filter ProblemLikes to delete.
+     * @example
+     * // Delete a few ProblemLikes
+     * const { count } = await prisma.problemLike.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProblemLikeDeleteManyArgs>(args?: SelectSubset<T, ProblemLikeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProblemLikes
+     * const problemLike = await prisma.problemLike.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProblemLikeUpdateManyArgs>(args: SelectSubset<T, ProblemLikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemLikes and returns the data updated in the database.
+     * @param {ProblemLikeUpdateManyAndReturnArgs} args - Arguments to update many ProblemLikes.
+     * @example
+     * // Update many ProblemLikes
+     * const problemLike = await prisma.problemLike.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProblemLikes and only return the `id`
+     * const problemLikeWithIdOnly = await prisma.problemLike.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProblemLikeUpdateManyAndReturnArgs>(args: SelectSubset<T, ProblemLikeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProblemLike.
+     * @param {ProblemLikeUpsertArgs} args - Arguments to update or create a ProblemLike.
+     * @example
+     * // Update or create a ProblemLike
+     * const problemLike = await prisma.problemLike.upsert({
+     *   create: {
+     *     // ... data to create a ProblemLike
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProblemLike we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProblemLikeUpsertArgs>(args: SelectSubset<T, ProblemLikeUpsertArgs<ExtArgs>>): Prisma__ProblemLikeClient<$Result.GetResult<Prisma.$ProblemLikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProblemLikes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeCountArgs} args - Arguments to filter ProblemLikes to count.
+     * @example
+     * // Count the number of ProblemLikes
+     * const count = await prisma.problemLike.count({
+     *   where: {
+     *     // ... the filter for the ProblemLikes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProblemLikeCountArgs>(
+      args?: Subset<T, ProblemLikeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProblemLikeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProblemLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProblemLikeAggregateArgs>(args: Subset<T, ProblemLikeAggregateArgs>): Prisma.PrismaPromise<GetProblemLikeAggregateType<T>>
+
+    /**
+     * Group by ProblemLike.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemLikeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProblemLikeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProblemLikeGroupByArgs['orderBy'] }
+        : { orderBy?: ProblemLikeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProblemLikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProblemLikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProblemLike model
+   */
+  readonly fields: ProblemLikeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProblemLike.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProblemLikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProblemLike model
+   */
+  interface ProblemLikeFieldRefs {
+    readonly id: FieldRef<"ProblemLike", 'String'>
+    readonly userId: FieldRef<"ProblemLike", 'String'>
+    readonly problemId: FieldRef<"ProblemLike", 'String'>
+    readonly createdAt: FieldRef<"ProblemLike", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProblemLike findUnique
+   */
+  export type ProblemLikeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemLike to fetch.
+     */
+    where: ProblemLikeWhereUniqueInput
+  }
+
+  /**
+   * ProblemLike findUniqueOrThrow
+   */
+  export type ProblemLikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemLike to fetch.
+     */
+    where: ProblemLikeWhereUniqueInput
+  }
+
+  /**
+   * ProblemLike findFirst
+   */
+  export type ProblemLikeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemLike to fetch.
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemLikes to fetch.
+     */
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemLikes.
+     */
+    cursor?: ProblemLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemLikes.
+     */
+    distinct?: ProblemLikeScalarFieldEnum | ProblemLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemLike findFirstOrThrow
+   */
+  export type ProblemLikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemLike to fetch.
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemLikes to fetch.
+     */
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemLikes.
+     */
+    cursor?: ProblemLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemLikes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemLikes.
+     */
+    distinct?: ProblemLikeScalarFieldEnum | ProblemLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemLike findMany
+   */
+  export type ProblemLikeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemLikes to fetch.
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemLikes to fetch.
+     */
+    orderBy?: ProblemLikeOrderByWithRelationInput | ProblemLikeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProblemLikes.
+     */
+    cursor?: ProblemLikeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemLikes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemLikes.
+     */
+    skip?: number
+    distinct?: ProblemLikeScalarFieldEnum | ProblemLikeScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemLike create
+   */
+  export type ProblemLikeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProblemLike.
+     */
+    data: XOR<ProblemLikeCreateInput, ProblemLikeUncheckedCreateInput>
+  }
+
+  /**
+   * ProblemLike createMany
+   */
+  export type ProblemLikeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProblemLikes.
+     */
+    data: ProblemLikeCreateManyInput | ProblemLikeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProblemLike createManyAndReturn
+   */
+  export type ProblemLikeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProblemLikes.
+     */
+    data: ProblemLikeCreateManyInput | ProblemLikeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemLike update
+   */
+  export type ProblemLikeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProblemLike.
+     */
+    data: XOR<ProblemLikeUpdateInput, ProblemLikeUncheckedUpdateInput>
+    /**
+     * Choose, which ProblemLike to update.
+     */
+    where: ProblemLikeWhereUniqueInput
+  }
+
+  /**
+   * ProblemLike updateMany
+   */
+  export type ProblemLikeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProblemLikes.
+     */
+    data: XOR<ProblemLikeUpdateManyMutationInput, ProblemLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemLikes to update
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * Limit how many ProblemLikes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemLike updateManyAndReturn
+   */
+  export type ProblemLikeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * The data used to update ProblemLikes.
+     */
+    data: XOR<ProblemLikeUpdateManyMutationInput, ProblemLikeUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemLikes to update
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * Limit how many ProblemLikes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemLike upsert
+   */
+  export type ProblemLikeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProblemLike to update in case it exists.
+     */
+    where: ProblemLikeWhereUniqueInput
+    /**
+     * In case the ProblemLike found by the `where` argument doesn't exist, create a new ProblemLike with this data.
+     */
+    create: XOR<ProblemLikeCreateInput, ProblemLikeUncheckedCreateInput>
+    /**
+     * In case the ProblemLike was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProblemLikeUpdateInput, ProblemLikeUncheckedUpdateInput>
+  }
+
+  /**
+   * ProblemLike delete
+   */
+  export type ProblemLikeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+    /**
+     * Filter which ProblemLike to delete.
+     */
+    where: ProblemLikeWhereUniqueInput
+  }
+
+  /**
+   * ProblemLike deleteMany
+   */
+  export type ProblemLikeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemLikes to delete
+     */
+    where?: ProblemLikeWhereInput
+    /**
+     * Limit how many ProblemLikes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemLike without action
+   */
+  export type ProblemLikeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemLike
+     */
+    select?: ProblemLikeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemLike
+     */
+    omit?: ProblemLikeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemLikeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProblemBookmark
+   */
+
+  export type AggregateProblemBookmark = {
+    _count: ProblemBookmarkCountAggregateOutputType | null
+    _min: ProblemBookmarkMinAggregateOutputType | null
+    _max: ProblemBookmarkMaxAggregateOutputType | null
+  }
+
+  export type ProblemBookmarkMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    problemId: string | null
+    note: string | null
+    createdAt: Date | null
+  }
+
+  export type ProblemBookmarkMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    problemId: string | null
+    note: string | null
+    createdAt: Date | null
+  }
+
+  export type ProblemBookmarkCountAggregateOutputType = {
+    id: number
+    userId: number
+    problemId: number
+    note: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ProblemBookmarkMinAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    note?: true
+    createdAt?: true
+  }
+
+  export type ProblemBookmarkMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    note?: true
+    createdAt?: true
+  }
+
+  export type ProblemBookmarkCountAggregateInputType = {
+    id?: true
+    userId?: true
+    problemId?: true
+    note?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ProblemBookmarkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemBookmark to aggregate.
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemBookmarks to fetch.
+     */
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProblemBookmarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemBookmarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemBookmarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProblemBookmarks
+    **/
+    _count?: true | ProblemBookmarkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProblemBookmarkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProblemBookmarkMaxAggregateInputType
+  }
+
+  export type GetProblemBookmarkAggregateType<T extends ProblemBookmarkAggregateArgs> = {
+        [P in keyof T & keyof AggregateProblemBookmark]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProblemBookmark[P]>
+      : GetScalarType<T[P], AggregateProblemBookmark[P]>
+  }
+
+
+
+
+  export type ProblemBookmarkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProblemBookmarkWhereInput
+    orderBy?: ProblemBookmarkOrderByWithAggregationInput | ProblemBookmarkOrderByWithAggregationInput[]
+    by: ProblemBookmarkScalarFieldEnum[] | ProblemBookmarkScalarFieldEnum
+    having?: ProblemBookmarkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProblemBookmarkCountAggregateInputType | true
+    _min?: ProblemBookmarkMinAggregateInputType
+    _max?: ProblemBookmarkMaxAggregateInputType
+  }
+
+  export type ProblemBookmarkGroupByOutputType = {
+    id: string
+    userId: string
+    problemId: string
+    note: string | null
+    createdAt: Date
+    _count: ProblemBookmarkCountAggregateOutputType | null
+    _min: ProblemBookmarkMinAggregateOutputType | null
+    _max: ProblemBookmarkMaxAggregateOutputType | null
+  }
+
+  type GetProblemBookmarkGroupByPayload<T extends ProblemBookmarkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProblemBookmarkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProblemBookmarkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProblemBookmarkGroupByOutputType[P]>
+            : GetScalarType<T[P], ProblemBookmarkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProblemBookmarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    note?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemBookmark"]>
+
+  export type ProblemBookmarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    note?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemBookmark"]>
+
+  export type ProblemBookmarkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    note?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["problemBookmark"]>
+
+  export type ProblemBookmarkSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    problemId?: boolean
+    note?: boolean
+    createdAt?: boolean
+  }
+
+  export type ProblemBookmarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "note" | "createdAt", ExtArgs["result"]["problemBookmark"]>
+  export type ProblemBookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemBookmarkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+  export type ProblemBookmarkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }
+
+  export type $ProblemBookmarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProblemBookmark"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      problem: Prisma.$ProblemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      problemId: string
+      note: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["problemBookmark"]>
+    composites: {}
+  }
+
+  type ProblemBookmarkGetPayload<S extends boolean | null | undefined | ProblemBookmarkDefaultArgs> = $Result.GetResult<Prisma.$ProblemBookmarkPayload, S>
+
+  type ProblemBookmarkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProblemBookmarkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProblemBookmarkCountAggregateInputType | true
+    }
+
+  export interface ProblemBookmarkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProblemBookmark'], meta: { name: 'ProblemBookmark' } }
+    /**
+     * Find zero or one ProblemBookmark that matches the filter.
+     * @param {ProblemBookmarkFindUniqueArgs} args - Arguments to find a ProblemBookmark
+     * @example
+     * // Get one ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProblemBookmarkFindUniqueArgs>(args: SelectSubset<T, ProblemBookmarkFindUniqueArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProblemBookmark that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProblemBookmarkFindUniqueOrThrowArgs} args - Arguments to find a ProblemBookmark
+     * @example
+     * // Get one ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProblemBookmarkFindUniqueOrThrowArgs>(args: SelectSubset<T, ProblemBookmarkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemBookmark that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkFindFirstArgs} args - Arguments to find a ProblemBookmark
+     * @example
+     * // Get one ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProblemBookmarkFindFirstArgs>(args?: SelectSubset<T, ProblemBookmarkFindFirstArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProblemBookmark that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkFindFirstOrThrowArgs} args - Arguments to find a ProblemBookmark
+     * @example
+     * // Get one ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProblemBookmarkFindFirstOrThrowArgs>(args?: SelectSubset<T, ProblemBookmarkFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProblemBookmarks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProblemBookmarks
+     * const problemBookmarks = await prisma.problemBookmark.findMany()
+     * 
+     * // Get first 10 ProblemBookmarks
+     * const problemBookmarks = await prisma.problemBookmark.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const problemBookmarkWithIdOnly = await prisma.problemBookmark.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProblemBookmarkFindManyArgs>(args?: SelectSubset<T, ProblemBookmarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProblemBookmark.
+     * @param {ProblemBookmarkCreateArgs} args - Arguments to create a ProblemBookmark.
+     * @example
+     * // Create one ProblemBookmark
+     * const ProblemBookmark = await prisma.problemBookmark.create({
+     *   data: {
+     *     // ... data to create a ProblemBookmark
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProblemBookmarkCreateArgs>(args: SelectSubset<T, ProblemBookmarkCreateArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProblemBookmarks.
+     * @param {ProblemBookmarkCreateManyArgs} args - Arguments to create many ProblemBookmarks.
+     * @example
+     * // Create many ProblemBookmarks
+     * const problemBookmark = await prisma.problemBookmark.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProblemBookmarkCreateManyArgs>(args?: SelectSubset<T, ProblemBookmarkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProblemBookmarks and returns the data saved in the database.
+     * @param {ProblemBookmarkCreateManyAndReturnArgs} args - Arguments to create many ProblemBookmarks.
+     * @example
+     * // Create many ProblemBookmarks
+     * const problemBookmark = await prisma.problemBookmark.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProblemBookmarks and only return the `id`
+     * const problemBookmarkWithIdOnly = await prisma.problemBookmark.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProblemBookmarkCreateManyAndReturnArgs>(args?: SelectSubset<T, ProblemBookmarkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProblemBookmark.
+     * @param {ProblemBookmarkDeleteArgs} args - Arguments to delete one ProblemBookmark.
+     * @example
+     * // Delete one ProblemBookmark
+     * const ProblemBookmark = await prisma.problemBookmark.delete({
+     *   where: {
+     *     // ... filter to delete one ProblemBookmark
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProblemBookmarkDeleteArgs>(args: SelectSubset<T, ProblemBookmarkDeleteArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProblemBookmark.
+     * @param {ProblemBookmarkUpdateArgs} args - Arguments to update one ProblemBookmark.
+     * @example
+     * // Update one ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProblemBookmarkUpdateArgs>(args: SelectSubset<T, ProblemBookmarkUpdateArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProblemBookmarks.
+     * @param {ProblemBookmarkDeleteManyArgs} args - Arguments to filter ProblemBookmarks to delete.
+     * @example
+     * // Delete a few ProblemBookmarks
+     * const { count } = await prisma.problemBookmark.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProblemBookmarkDeleteManyArgs>(args?: SelectSubset<T, ProblemBookmarkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemBookmarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProblemBookmarks
+     * const problemBookmark = await prisma.problemBookmark.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProblemBookmarkUpdateManyArgs>(args: SelectSubset<T, ProblemBookmarkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProblemBookmarks and returns the data updated in the database.
+     * @param {ProblemBookmarkUpdateManyAndReturnArgs} args - Arguments to update many ProblemBookmarks.
+     * @example
+     * // Update many ProblemBookmarks
+     * const problemBookmark = await prisma.problemBookmark.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProblemBookmarks and only return the `id`
+     * const problemBookmarkWithIdOnly = await prisma.problemBookmark.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProblemBookmarkUpdateManyAndReturnArgs>(args: SelectSubset<T, ProblemBookmarkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProblemBookmark.
+     * @param {ProblemBookmarkUpsertArgs} args - Arguments to update or create a ProblemBookmark.
+     * @example
+     * // Update or create a ProblemBookmark
+     * const problemBookmark = await prisma.problemBookmark.upsert({
+     *   create: {
+     *     // ... data to create a ProblemBookmark
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProblemBookmark we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProblemBookmarkUpsertArgs>(args: SelectSubset<T, ProblemBookmarkUpsertArgs<ExtArgs>>): Prisma__ProblemBookmarkClient<$Result.GetResult<Prisma.$ProblemBookmarkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProblemBookmarks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkCountArgs} args - Arguments to filter ProblemBookmarks to count.
+     * @example
+     * // Count the number of ProblemBookmarks
+     * const count = await prisma.problemBookmark.count({
+     *   where: {
+     *     // ... the filter for the ProblemBookmarks we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProblemBookmarkCountArgs>(
+      args?: Subset<T, ProblemBookmarkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProblemBookmarkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProblemBookmark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProblemBookmarkAggregateArgs>(args: Subset<T, ProblemBookmarkAggregateArgs>): Prisma.PrismaPromise<GetProblemBookmarkAggregateType<T>>
+
+    /**
+     * Group by ProblemBookmark.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProblemBookmarkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProblemBookmarkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProblemBookmarkGroupByArgs['orderBy'] }
+        : { orderBy?: ProblemBookmarkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProblemBookmarkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProblemBookmarkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProblemBookmark model
+   */
+  readonly fields: ProblemBookmarkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProblemBookmark.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProblemBookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProblemBookmark model
+   */
+  interface ProblemBookmarkFieldRefs {
+    readonly id: FieldRef<"ProblemBookmark", 'String'>
+    readonly userId: FieldRef<"ProblemBookmark", 'String'>
+    readonly problemId: FieldRef<"ProblemBookmark", 'String'>
+    readonly note: FieldRef<"ProblemBookmark", 'String'>
+    readonly createdAt: FieldRef<"ProblemBookmark", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProblemBookmark findUnique
+   */
+  export type ProblemBookmarkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemBookmark to fetch.
+     */
+    where: ProblemBookmarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemBookmark findUniqueOrThrow
+   */
+  export type ProblemBookmarkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemBookmark to fetch.
+     */
+    where: ProblemBookmarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemBookmark findFirst
+   */
+  export type ProblemBookmarkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemBookmark to fetch.
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemBookmarks to fetch.
+     */
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemBookmarks.
+     */
+    cursor?: ProblemBookmarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemBookmarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemBookmarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemBookmarks.
+     */
+    distinct?: ProblemBookmarkScalarFieldEnum | ProblemBookmarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemBookmark findFirstOrThrow
+   */
+  export type ProblemBookmarkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemBookmark to fetch.
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemBookmarks to fetch.
+     */
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProblemBookmarks.
+     */
+    cursor?: ProblemBookmarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemBookmarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemBookmarks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProblemBookmarks.
+     */
+    distinct?: ProblemBookmarkScalarFieldEnum | ProblemBookmarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemBookmark findMany
+   */
+  export type ProblemBookmarkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter, which ProblemBookmarks to fetch.
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProblemBookmarks to fetch.
+     */
+    orderBy?: ProblemBookmarkOrderByWithRelationInput | ProblemBookmarkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProblemBookmarks.
+     */
+    cursor?: ProblemBookmarkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProblemBookmarks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProblemBookmarks.
+     */
+    skip?: number
+    distinct?: ProblemBookmarkScalarFieldEnum | ProblemBookmarkScalarFieldEnum[]
+  }
+
+  /**
+   * ProblemBookmark create
+   */
+  export type ProblemBookmarkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProblemBookmark.
+     */
+    data: XOR<ProblemBookmarkCreateInput, ProblemBookmarkUncheckedCreateInput>
+  }
+
+  /**
+   * ProblemBookmark createMany
+   */
+  export type ProblemBookmarkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProblemBookmarks.
+     */
+    data: ProblemBookmarkCreateManyInput | ProblemBookmarkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProblemBookmark createManyAndReturn
+   */
+  export type ProblemBookmarkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProblemBookmarks.
+     */
+    data: ProblemBookmarkCreateManyInput | ProblemBookmarkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemBookmark update
+   */
+  export type ProblemBookmarkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProblemBookmark.
+     */
+    data: XOR<ProblemBookmarkUpdateInput, ProblemBookmarkUncheckedUpdateInput>
+    /**
+     * Choose, which ProblemBookmark to update.
+     */
+    where: ProblemBookmarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemBookmark updateMany
+   */
+  export type ProblemBookmarkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProblemBookmarks.
+     */
+    data: XOR<ProblemBookmarkUpdateManyMutationInput, ProblemBookmarkUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemBookmarks to update
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * Limit how many ProblemBookmarks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemBookmark updateManyAndReturn
+   */
+  export type ProblemBookmarkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * The data used to update ProblemBookmarks.
+     */
+    data: XOR<ProblemBookmarkUpdateManyMutationInput, ProblemBookmarkUncheckedUpdateManyInput>
+    /**
+     * Filter which ProblemBookmarks to update
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * Limit how many ProblemBookmarks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProblemBookmark upsert
+   */
+  export type ProblemBookmarkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProblemBookmark to update in case it exists.
+     */
+    where: ProblemBookmarkWhereUniqueInput
+    /**
+     * In case the ProblemBookmark found by the `where` argument doesn't exist, create a new ProblemBookmark with this data.
+     */
+    create: XOR<ProblemBookmarkCreateInput, ProblemBookmarkUncheckedCreateInput>
+    /**
+     * In case the ProblemBookmark was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProblemBookmarkUpdateInput, ProblemBookmarkUncheckedUpdateInput>
+  }
+
+  /**
+   * ProblemBookmark delete
+   */
+  export type ProblemBookmarkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+    /**
+     * Filter which ProblemBookmark to delete.
+     */
+    where: ProblemBookmarkWhereUniqueInput
+  }
+
+  /**
+   * ProblemBookmark deleteMany
+   */
+  export type ProblemBookmarkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProblemBookmarks to delete
+     */
+    where?: ProblemBookmarkWhereInput
+    /**
+     * Limit how many ProblemBookmarks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProblemBookmark without action
+   */
+  export type ProblemBookmarkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemBookmark
+     */
+    select?: ProblemBookmarkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProblemBookmark
+     */
+    omit?: ProblemBookmarkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProblemBookmarkInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10845,6 +13294,27 @@ export namespace Prisma {
   };
 
   export type ProblemInPlaylistScalarFieldEnum = (typeof ProblemInPlaylistScalarFieldEnum)[keyof typeof ProblemInPlaylistScalarFieldEnum]
+
+
+  export const ProblemLikeScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    problemId: 'problemId',
+    createdAt: 'createdAt'
+  };
+
+  export type ProblemLikeScalarFieldEnum = (typeof ProblemLikeScalarFieldEnum)[keyof typeof ProblemLikeScalarFieldEnum]
+
+
+  export const ProblemBookmarkScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    problemId: 'problemId',
+    note: 'note',
+    createdAt: 'createdAt'
+  };
+
+  export type ProblemBookmarkScalarFieldEnum = (typeof ProblemBookmarkScalarFieldEnum)[keyof typeof ProblemBookmarkScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11016,6 +13486,8 @@ export namespace Prisma {
     submissions?: SubmissionListRelationFilter
     solvedProblems?: ProblemSolvedListRelationFilter
     playlists?: PlaylistListRelationFilter
+    likes?: ProblemLikeListRelationFilter
+    bookmarks?: ProblemBookmarkListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -11031,6 +13503,8 @@ export namespace Prisma {
     submissions?: SubmissionOrderByRelationAggregateInput
     solvedProblems?: ProblemSolvedOrderByRelationAggregateInput
     playlists?: PlaylistOrderByRelationAggregateInput
+    likes?: ProblemLikeOrderByRelationAggregateInput
+    bookmarks?: ProblemBookmarkOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -11049,6 +13523,8 @@ export namespace Prisma {
     submissions?: SubmissionListRelationFilter
     solvedProblems?: ProblemSolvedListRelationFilter
     playlists?: PlaylistListRelationFilter
+    likes?: ProblemLikeListRelationFilter
+    bookmarks?: ProblemBookmarkListRelationFilter
   }, "id" | "name" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -11149,6 +13625,8 @@ export namespace Prisma {
     submissions?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
+    likes?: ProblemLikeListRelationFilter
+    bookmarks?: ProblemBookmarkListRelationFilter
   }
 
   export type ProblemOrderByWithRelationInput = {
@@ -11171,6 +13649,8 @@ export namespace Prisma {
     submissions?: SubmissionOrderByRelationAggregateInput
     solvedBy?: ProblemSolvedOrderByRelationAggregateInput
     problemsPlaylists?: ProblemInPlaylistOrderByRelationAggregateInput
+    likes?: ProblemLikeOrderByRelationAggregateInput
+    bookmarks?: ProblemBookmarkOrderByRelationAggregateInput
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
@@ -11196,6 +13676,8 @@ export namespace Prisma {
     submissions?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
+    likes?: ProblemLikeListRelationFilter
+    bookmarks?: ProblemBookmarkListRelationFilter
   }, "id">
 
   export type ProblemOrderByWithAggregationInput = {
@@ -11605,6 +14087,119 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
   }
 
+  export type ProblemLikeWhereInput = {
+    AND?: ProblemLikeWhereInput | ProblemLikeWhereInput[]
+    OR?: ProblemLikeWhereInput[]
+    NOT?: ProblemLikeWhereInput | ProblemLikeWhereInput[]
+    id?: StringFilter<"ProblemLike"> | string
+    userId?: StringFilter<"ProblemLike"> | string
+    problemId?: StringFilter<"ProblemLike"> | string
+    createdAt?: DateTimeFilter<"ProblemLike"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }
+
+  export type ProblemLikeOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    problem?: ProblemOrderByWithRelationInput
+  }
+
+  export type ProblemLikeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_problemId?: ProblemLikeUserIdProblemIdCompoundUniqueInput
+    AND?: ProblemLikeWhereInput | ProblemLikeWhereInput[]
+    OR?: ProblemLikeWhereInput[]
+    NOT?: ProblemLikeWhereInput | ProblemLikeWhereInput[]
+    userId?: StringFilter<"ProblemLike"> | string
+    problemId?: StringFilter<"ProblemLike"> | string
+    createdAt?: DateTimeFilter<"ProblemLike"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }, "id" | "userId_problemId">
+
+  export type ProblemLikeOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+    _count?: ProblemLikeCountOrderByAggregateInput
+    _max?: ProblemLikeMaxOrderByAggregateInput
+    _min?: ProblemLikeMinOrderByAggregateInput
+  }
+
+  export type ProblemLikeScalarWhereWithAggregatesInput = {
+    AND?: ProblemLikeScalarWhereWithAggregatesInput | ProblemLikeScalarWhereWithAggregatesInput[]
+    OR?: ProblemLikeScalarWhereWithAggregatesInput[]
+    NOT?: ProblemLikeScalarWhereWithAggregatesInput | ProblemLikeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProblemLike"> | string
+    userId?: StringWithAggregatesFilter<"ProblemLike"> | string
+    problemId?: StringWithAggregatesFilter<"ProblemLike"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemLike"> | Date | string
+  }
+
+  export type ProblemBookmarkWhereInput = {
+    AND?: ProblemBookmarkWhereInput | ProblemBookmarkWhereInput[]
+    OR?: ProblemBookmarkWhereInput[]
+    NOT?: ProblemBookmarkWhereInput | ProblemBookmarkWhereInput[]
+    id?: StringFilter<"ProblemBookmark"> | string
+    userId?: StringFilter<"ProblemBookmark"> | string
+    problemId?: StringFilter<"ProblemBookmark"> | string
+    note?: StringNullableFilter<"ProblemBookmark"> | string | null
+    createdAt?: DateTimeFilter<"ProblemBookmark"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }
+
+  export type ProblemBookmarkOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    note?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    problem?: ProblemOrderByWithRelationInput
+  }
+
+  export type ProblemBookmarkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_problemId?: ProblemBookmarkUserIdProblemIdCompoundUniqueInput
+    AND?: ProblemBookmarkWhereInput | ProblemBookmarkWhereInput[]
+    OR?: ProblemBookmarkWhereInput[]
+    NOT?: ProblemBookmarkWhereInput | ProblemBookmarkWhereInput[]
+    userId?: StringFilter<"ProblemBookmark"> | string
+    problemId?: StringFilter<"ProblemBookmark"> | string
+    note?: StringNullableFilter<"ProblemBookmark"> | string | null
+    createdAt?: DateTimeFilter<"ProblemBookmark"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }, "id" | "userId_problemId">
+
+  export type ProblemBookmarkOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    note?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: ProblemBookmarkCountOrderByAggregateInput
+    _max?: ProblemBookmarkMaxOrderByAggregateInput
+    _min?: ProblemBookmarkMinOrderByAggregateInput
+  }
+
+  export type ProblemBookmarkScalarWhereWithAggregatesInput = {
+    AND?: ProblemBookmarkScalarWhereWithAggregatesInput | ProblemBookmarkScalarWhereWithAggregatesInput[]
+    OR?: ProblemBookmarkScalarWhereWithAggregatesInput[]
+    NOT?: ProblemBookmarkScalarWhereWithAggregatesInput | ProblemBookmarkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProblemBookmark"> | string
+    userId?: StringWithAggregatesFilter<"ProblemBookmark"> | string
+    problemId?: StringWithAggregatesFilter<"ProblemBookmark"> | string
+    note?: StringNullableWithAggregatesFilter<"ProblemBookmark"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemBookmark"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -11618,6 +14213,8 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlists?: PlaylistCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11633,6 +14230,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -11648,6 +14247,8 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11663,6 +14264,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -11766,6 +14369,8 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateInput = {
@@ -11787,6 +14392,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUpdateInput = {
@@ -11808,6 +14415,8 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateInput = {
@@ -11829,6 +14438,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyInput = {
@@ -12262,6 +14873,107 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProblemLikeCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLikesInput
+    problem: ProblemCreateNestedOneWithoutLikesInput
+  }
+
+  export type ProblemLikeUncheckedCreateInput = {
+    id?: string
+    userId: string
+    problemId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemLikeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLikesNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type ProblemLikeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemLikeCreateManyInput = {
+    id?: string
+    userId: string
+    problemId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemLikeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemLikeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkCreateInput = {
+    id?: string
+    note?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBookmarksInput
+    problem: ProblemCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type ProblemBookmarkUncheckedCreateInput = {
+    id?: string
+    userId: string
+    problemId: string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type ProblemBookmarkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkCreateManyInput = {
+    id?: string
+    userId: string
+    problemId: string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12334,6 +15046,18 @@ export namespace Prisma {
     none?: PlaylistWhereInput
   }
 
+  export type ProblemLikeListRelationFilter = {
+    every?: ProblemLikeWhereInput
+    some?: ProblemLikeWhereInput
+    none?: ProblemLikeWhereInput
+  }
+
+  export type ProblemBookmarkListRelationFilter = {
+    every?: ProblemBookmarkWhereInput
+    some?: ProblemBookmarkWhereInput
+    none?: ProblemBookmarkWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -12352,6 +15076,14 @@ export namespace Prisma {
   }
 
   export type PlaylistOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProblemLikeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProblemBookmarkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12850,6 +15582,61 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type ProblemLikeUserIdProblemIdCompoundUniqueInput = {
+    userId: string
+    problemId: string
+  }
+
+  export type ProblemLikeCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProblemLikeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProblemLikeMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProblemBookmarkUserIdProblemIdCompoundUniqueInput = {
+    userId: string
+    problemId: string
+  }
+
+  export type ProblemBookmarkCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProblemBookmarkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ProblemBookmarkMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    problemId?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type ProblemCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -12878,6 +15665,20 @@ export namespace Prisma {
     connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
   }
 
+  export type ProblemLikeCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput> | ProblemLikeCreateWithoutUserInput[] | ProblemLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutUserInput | ProblemLikeCreateOrConnectWithoutUserInput[]
+    createMany?: ProblemLikeCreateManyUserInputEnvelope
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+  }
+
+  export type ProblemBookmarkCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput> | ProblemBookmarkCreateWithoutUserInput[] | ProblemBookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutUserInput | ProblemBookmarkCreateOrConnectWithoutUserInput[]
+    createMany?: ProblemBookmarkCreateManyUserInputEnvelope
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+  }
+
   export type ProblemUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -12904,6 +15705,20 @@ export namespace Prisma {
     connectOrCreate?: PlaylistCreateOrConnectWithoutUserInput | PlaylistCreateOrConnectWithoutUserInput[]
     createMany?: PlaylistCreateManyUserInputEnvelope
     connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
+  }
+
+  export type ProblemLikeUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput> | ProblemLikeCreateWithoutUserInput[] | ProblemLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutUserInput | ProblemLikeCreateOrConnectWithoutUserInput[]
+    createMany?: ProblemLikeCreateManyUserInputEnvelope
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+  }
+
+  export type ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput> | ProblemBookmarkCreateWithoutUserInput[] | ProblemBookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutUserInput | ProblemBookmarkCreateOrConnectWithoutUserInput[]
+    createMany?: ProblemBookmarkCreateManyUserInputEnvelope
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12978,6 +15793,34 @@ export namespace Prisma {
     deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
   }
 
+  export type ProblemLikeUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput> | ProblemLikeCreateWithoutUserInput[] | ProblemLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutUserInput | ProblemLikeCreateOrConnectWithoutUserInput[]
+    upsert?: ProblemLikeUpsertWithWhereUniqueWithoutUserInput | ProblemLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProblemLikeCreateManyUserInputEnvelope
+    set?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    disconnect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    delete?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    update?: ProblemLikeUpdateWithWhereUniqueWithoutUserInput | ProblemLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProblemLikeUpdateManyWithWhereWithoutUserInput | ProblemLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+  }
+
+  export type ProblemBookmarkUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput> | ProblemBookmarkCreateWithoutUserInput[] | ProblemBookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutUserInput | ProblemBookmarkCreateOrConnectWithoutUserInput[]
+    upsert?: ProblemBookmarkUpsertWithWhereUniqueWithoutUserInput | ProblemBookmarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProblemBookmarkCreateManyUserInputEnvelope
+    set?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    disconnect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    delete?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    update?: ProblemBookmarkUpdateWithWhereUniqueWithoutUserInput | ProblemBookmarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProblemBookmarkUpdateManyWithWhereWithoutUserInput | ProblemBookmarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
+  }
+
   export type ProblemUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ProblemCreateWithoutUserInput, ProblemUncheckedCreateWithoutUserInput> | ProblemCreateWithoutUserInput[] | ProblemUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutUserInput | ProblemCreateOrConnectWithoutUserInput[]
@@ -13034,6 +15877,34 @@ export namespace Prisma {
     deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
   }
 
+  export type ProblemLikeUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput> | ProblemLikeCreateWithoutUserInput[] | ProblemLikeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutUserInput | ProblemLikeCreateOrConnectWithoutUserInput[]
+    upsert?: ProblemLikeUpsertWithWhereUniqueWithoutUserInput | ProblemLikeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProblemLikeCreateManyUserInputEnvelope
+    set?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    disconnect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    delete?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    update?: ProblemLikeUpdateWithWhereUniqueWithoutUserInput | ProblemLikeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProblemLikeUpdateManyWithWhereWithoutUserInput | ProblemLikeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+  }
+
+  export type ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput> | ProblemBookmarkCreateWithoutUserInput[] | ProblemBookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutUserInput | ProblemBookmarkCreateOrConnectWithoutUserInput[]
+    upsert?: ProblemBookmarkUpsertWithWhereUniqueWithoutUserInput | ProblemBookmarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProblemBookmarkCreateManyUserInputEnvelope
+    set?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    disconnect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    delete?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    update?: ProblemBookmarkUpdateWithWhereUniqueWithoutUserInput | ProblemBookmarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProblemBookmarkUpdateManyWithWhereWithoutUserInput | ProblemBookmarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
+  }
+
   export type ProblemCreatetagsInput = {
     set: string[]
   }
@@ -13065,6 +15936,20 @@ export namespace Prisma {
     connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
   }
 
+  export type ProblemLikeCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput> | ProblemLikeCreateWithoutProblemInput[] | ProblemLikeUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutProblemInput | ProblemLikeCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemLikeCreateManyProblemInputEnvelope
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+  }
+
+  export type ProblemBookmarkCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput> | ProblemBookmarkCreateWithoutProblemInput[] | ProblemBookmarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutProblemInput | ProblemBookmarkCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemBookmarkCreateManyProblemInputEnvelope
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+  }
+
   export type SubmissionUncheckedCreateNestedManyWithoutProblemInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -13084,6 +15969,20 @@ export namespace Prisma {
     connectOrCreate?: ProblemInPlaylistCreateOrConnectWithoutProblemInput | ProblemInPlaylistCreateOrConnectWithoutProblemInput[]
     createMany?: ProblemInPlaylistCreateManyProblemInputEnvelope
     connect?: ProblemInPlaylistWhereUniqueInput | ProblemInPlaylistWhereUniqueInput[]
+  }
+
+  export type ProblemLikeUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput> | ProblemLikeCreateWithoutProblemInput[] | ProblemLikeUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutProblemInput | ProblemLikeCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemLikeCreateManyProblemInputEnvelope
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+  }
+
+  export type ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput> | ProblemBookmarkCreateWithoutProblemInput[] | ProblemBookmarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutProblemInput | ProblemBookmarkCreateOrConnectWithoutProblemInput[]
+    createMany?: ProblemBookmarkCreateManyProblemInputEnvelope
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
   }
 
   export type EnumDifficultyFieldUpdateOperationsInput = {
@@ -13145,6 +16044,34 @@ export namespace Prisma {
     deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
   }
 
+  export type ProblemLikeUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput> | ProblemLikeCreateWithoutProblemInput[] | ProblemLikeUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutProblemInput | ProblemLikeCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemLikeUpsertWithWhereUniqueWithoutProblemInput | ProblemLikeUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemLikeCreateManyProblemInputEnvelope
+    set?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    disconnect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    delete?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    update?: ProblemLikeUpdateWithWhereUniqueWithoutProblemInput | ProblemLikeUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemLikeUpdateManyWithWhereWithoutProblemInput | ProblemLikeUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+  }
+
+  export type ProblemBookmarkUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput> | ProblemBookmarkCreateWithoutProblemInput[] | ProblemBookmarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutProblemInput | ProblemBookmarkCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemBookmarkUpsertWithWhereUniqueWithoutProblemInput | ProblemBookmarkUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemBookmarkCreateManyProblemInputEnvelope
+    set?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    disconnect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    delete?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    update?: ProblemBookmarkUpdateWithWhereUniqueWithoutProblemInput | ProblemBookmarkUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemBookmarkUpdateManyWithWhereWithoutProblemInput | ProblemBookmarkUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
+  }
+
   export type SubmissionUncheckedUpdateManyWithoutProblemNestedInput = {
     create?: XOR<SubmissionCreateWithoutProblemInput, SubmissionUncheckedCreateWithoutProblemInput> | SubmissionCreateWithoutProblemInput[] | SubmissionUncheckedCreateWithoutProblemInput[]
     connectOrCreate?: SubmissionCreateOrConnectWithoutProblemInput | SubmissionCreateOrConnectWithoutProblemInput[]
@@ -13185,6 +16112,34 @@ export namespace Prisma {
     update?: ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput | ProblemInPlaylistUpdateWithWhereUniqueWithoutProblemInput[]
     updateMany?: ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput | ProblemInPlaylistUpdateManyWithWhereWithoutProblemInput[]
     deleteMany?: ProblemInPlaylistScalarWhereInput | ProblemInPlaylistScalarWhereInput[]
+  }
+
+  export type ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput> | ProblemLikeCreateWithoutProblemInput[] | ProblemLikeUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemLikeCreateOrConnectWithoutProblemInput | ProblemLikeCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemLikeUpsertWithWhereUniqueWithoutProblemInput | ProblemLikeUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemLikeCreateManyProblemInputEnvelope
+    set?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    disconnect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    delete?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    connect?: ProblemLikeWhereUniqueInput | ProblemLikeWhereUniqueInput[]
+    update?: ProblemLikeUpdateWithWhereUniqueWithoutProblemInput | ProblemLikeUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemLikeUpdateManyWithWhereWithoutProblemInput | ProblemLikeUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+  }
+
+  export type ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput> | ProblemBookmarkCreateWithoutProblemInput[] | ProblemBookmarkUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: ProblemBookmarkCreateOrConnectWithoutProblemInput | ProblemBookmarkCreateOrConnectWithoutProblemInput[]
+    upsert?: ProblemBookmarkUpsertWithWhereUniqueWithoutProblemInput | ProblemBookmarkUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: ProblemBookmarkCreateManyProblemInputEnvelope
+    set?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    disconnect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    delete?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    connect?: ProblemBookmarkWhereUniqueInput | ProblemBookmarkWhereUniqueInput[]
+    update?: ProblemBookmarkUpdateWithWhereUniqueWithoutProblemInput | ProblemBookmarkUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: ProblemBookmarkUpdateManyWithWhereWithoutProblemInput | ProblemBookmarkUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSubmissionsInput = {
@@ -13393,6 +16348,62 @@ export namespace Prisma {
     upsert?: ProblemUpsertWithoutProblemsPlaylistsInput
     connect?: ProblemWhereUniqueInput
     update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProblemsPlaylistsInput, ProblemUpdateWithoutProblemsPlaylistsInput>, ProblemUncheckedUpdateWithoutProblemsPlaylistsInput>
+  }
+
+  export type UserCreateNestedOneWithoutLikesInput = {
+    create?: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProblemCreateNestedOneWithoutLikesInput = {
+    create?: XOR<ProblemCreateWithoutLikesInput, ProblemUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutLikesInput
+    connect?: ProblemWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikesInput
+    upsert?: UserUpsertWithoutLikesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLikesInput, UserUpdateWithoutLikesInput>, UserUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type ProblemUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<ProblemCreateWithoutLikesInput, ProblemUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutLikesInput
+    upsert?: ProblemUpsertWithoutLikesInput
+    connect?: ProblemWhereUniqueInput
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutLikesInput, ProblemUpdateWithoutLikesInput>, ProblemUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type UserCreateNestedOneWithoutBookmarksInput = {
+    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProblemCreateNestedOneWithoutBookmarksInput = {
+    create?: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutBookmarksInput
+    connect?: ProblemWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutBookmarksNestedInput = {
+    create?: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookmarksInput
+    upsert?: UserUpsertWithoutBookmarksInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookmarksInput, UserUpdateWithoutBookmarksInput>, UserUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type ProblemUpdateOneRequiredWithoutBookmarksNestedInput = {
+    create?: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutBookmarksInput
+    upsert?: ProblemUpsertWithoutBookmarksInput
+    connect?: ProblemWhereUniqueInput
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutBookmarksInput, ProblemUpdateWithoutBookmarksInput>, ProblemUncheckedUpdateWithoutBookmarksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13619,6 +16630,8 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutUserInput = {
@@ -13639,6 +16652,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutUserInput = {
@@ -13740,6 +16755,52 @@ export namespace Prisma {
 
   export type PlaylistCreateManyUserInputEnvelope = {
     data: PlaylistCreateManyUserInput | PlaylistCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProblemLikeCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    problem: ProblemCreateNestedOneWithoutLikesInput
+  }
+
+  export type ProblemLikeUncheckedCreateWithoutUserInput = {
+    id?: string
+    problemId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemLikeCreateOrConnectWithoutUserInput = {
+    where: ProblemLikeWhereUniqueInput
+    create: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProblemLikeCreateManyUserInputEnvelope = {
+    data: ProblemLikeCreateManyUserInput | ProblemLikeCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProblemBookmarkCreateWithoutUserInput = {
+    id?: string
+    note?: string | null
+    createdAt?: Date | string
+    problem: ProblemCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type ProblemBookmarkUncheckedCreateWithoutUserInput = {
+    id?: string
+    problemId: string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkCreateOrConnectWithoutUserInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    create: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProblemBookmarkCreateManyUserInputEnvelope = {
+    data: ProblemBookmarkCreateManyUserInput | ProblemBookmarkCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -13869,6 +16930,59 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
   }
 
+  export type ProblemLikeUpsertWithWhereUniqueWithoutUserInput = {
+    where: ProblemLikeWhereUniqueInput
+    update: XOR<ProblemLikeUpdateWithoutUserInput, ProblemLikeUncheckedUpdateWithoutUserInput>
+    create: XOR<ProblemLikeCreateWithoutUserInput, ProblemLikeUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProblemLikeUpdateWithWhereUniqueWithoutUserInput = {
+    where: ProblemLikeWhereUniqueInput
+    data: XOR<ProblemLikeUpdateWithoutUserInput, ProblemLikeUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProblemLikeUpdateManyWithWhereWithoutUserInput = {
+    where: ProblemLikeScalarWhereInput
+    data: XOR<ProblemLikeUpdateManyMutationInput, ProblemLikeUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ProblemLikeScalarWhereInput = {
+    AND?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+    OR?: ProblemLikeScalarWhereInput[]
+    NOT?: ProblemLikeScalarWhereInput | ProblemLikeScalarWhereInput[]
+    id?: StringFilter<"ProblemLike"> | string
+    userId?: StringFilter<"ProblemLike"> | string
+    problemId?: StringFilter<"ProblemLike"> | string
+    createdAt?: DateTimeFilter<"ProblemLike"> | Date | string
+  }
+
+  export type ProblemBookmarkUpsertWithWhereUniqueWithoutUserInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    update: XOR<ProblemBookmarkUpdateWithoutUserInput, ProblemBookmarkUncheckedUpdateWithoutUserInput>
+    create: XOR<ProblemBookmarkCreateWithoutUserInput, ProblemBookmarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProblemBookmarkUpdateWithWhereUniqueWithoutUserInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    data: XOR<ProblemBookmarkUpdateWithoutUserInput, ProblemBookmarkUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProblemBookmarkUpdateManyWithWhereWithoutUserInput = {
+    where: ProblemBookmarkScalarWhereInput
+    data: XOR<ProblemBookmarkUpdateManyMutationInput, ProblemBookmarkUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ProblemBookmarkScalarWhereInput = {
+    AND?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
+    OR?: ProblemBookmarkScalarWhereInput[]
+    NOT?: ProblemBookmarkScalarWhereInput | ProblemBookmarkScalarWhereInput[]
+    id?: StringFilter<"ProblemBookmark"> | string
+    userId?: StringFilter<"ProblemBookmark"> | string
+    problemId?: StringFilter<"ProblemBookmark"> | string
+    note?: StringNullableFilter<"ProblemBookmark"> | string | null
+    createdAt?: DateTimeFilter<"ProblemBookmark"> | Date | string
+  }
+
   export type UserCreateWithoutProblemsInput = {
     id?: string
     name?: string | null
@@ -13881,6 +16995,8 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlists?: PlaylistCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProblemsInput = {
@@ -13895,6 +17011,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProblemsInput = {
@@ -13988,6 +17106,52 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProblemLikeCreateWithoutProblemInput = {
+    id?: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLikesInput
+  }
+
+  export type ProblemLikeUncheckedCreateWithoutProblemInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemLikeCreateOrConnectWithoutProblemInput = {
+    where: ProblemLikeWhereUniqueInput
+    create: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemLikeCreateManyProblemInputEnvelope = {
+    data: ProblemLikeCreateManyProblemInput | ProblemLikeCreateManyProblemInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProblemBookmarkCreateWithoutProblemInput = {
+    id?: string
+    note?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBookmarksInput
+  }
+
+  export type ProblemBookmarkUncheckedCreateWithoutProblemInput = {
+    id?: string
+    userId: string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkCreateOrConnectWithoutProblemInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    create: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemBookmarkCreateManyProblemInputEnvelope = {
+    data: ProblemBookmarkCreateManyProblemInput | ProblemBookmarkCreateManyProblemInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutProblemsInput = {
     update: XOR<UserUpdateWithoutProblemsInput, UserUncheckedUpdateWithoutProblemsInput>
     create: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
@@ -14011,6 +17175,8 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProblemsInput = {
@@ -14025,6 +17191,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutProblemInput = {
@@ -14085,6 +17253,38 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
   }
 
+  export type ProblemLikeUpsertWithWhereUniqueWithoutProblemInput = {
+    where: ProblemLikeWhereUniqueInput
+    update: XOR<ProblemLikeUpdateWithoutProblemInput, ProblemLikeUncheckedUpdateWithoutProblemInput>
+    create: XOR<ProblemLikeCreateWithoutProblemInput, ProblemLikeUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemLikeUpdateWithWhereUniqueWithoutProblemInput = {
+    where: ProblemLikeWhereUniqueInput
+    data: XOR<ProblemLikeUpdateWithoutProblemInput, ProblemLikeUncheckedUpdateWithoutProblemInput>
+  }
+
+  export type ProblemLikeUpdateManyWithWhereWithoutProblemInput = {
+    where: ProblemLikeScalarWhereInput
+    data: XOR<ProblemLikeUpdateManyMutationInput, ProblemLikeUncheckedUpdateManyWithoutProblemInput>
+  }
+
+  export type ProblemBookmarkUpsertWithWhereUniqueWithoutProblemInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    update: XOR<ProblemBookmarkUpdateWithoutProblemInput, ProblemBookmarkUncheckedUpdateWithoutProblemInput>
+    create: XOR<ProblemBookmarkCreateWithoutProblemInput, ProblemBookmarkUncheckedCreateWithoutProblemInput>
+  }
+
+  export type ProblemBookmarkUpdateWithWhereUniqueWithoutProblemInput = {
+    where: ProblemBookmarkWhereUniqueInput
+    data: XOR<ProblemBookmarkUpdateWithoutProblemInput, ProblemBookmarkUncheckedUpdateWithoutProblemInput>
+  }
+
+  export type ProblemBookmarkUpdateManyWithWhereWithoutProblemInput = {
+    where: ProblemBookmarkScalarWhereInput
+    data: XOR<ProblemBookmarkUpdateManyMutationInput, ProblemBookmarkUncheckedUpdateManyWithoutProblemInput>
+  }
+
   export type UserCreateWithoutSubmissionsInput = {
     id?: string
     name?: string | null
@@ -14097,6 +17297,8 @@ export namespace Prisma {
     problems?: ProblemCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
     playlists?: PlaylistCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubmissionsInput = {
@@ -14111,6 +17313,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
     playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubmissionsInput = {
@@ -14136,6 +17340,8 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutProblemsInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSubmissionsInput = {
@@ -14156,6 +17362,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSubmissionsInput = {
@@ -14224,6 +17432,8 @@ export namespace Prisma {
     problems?: ProblemUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubmissionsInput = {
@@ -14238,6 +17448,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSubmissionsInput = {
@@ -14269,6 +17481,8 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSubmissionsInput = {
@@ -14289,6 +17503,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type TestCaseResultUpsertWithWhereUniqueWithoutSubmissionInput = {
@@ -14417,6 +17633,8 @@ export namespace Prisma {
     problems?: ProblemCreateNestedManyWithoutUserInput
     submissions?: SubmissionCreateNestedManyWithoutUserInput
     playlists?: PlaylistCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSolvedProblemsInput = {
@@ -14431,6 +17649,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSolvedProblemsInput = {
@@ -14456,6 +17676,8 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutProblemsInput
     submissions?: SubmissionCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSolvedByInput = {
@@ -14476,6 +17698,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSolvedByInput = {
@@ -14506,6 +17730,8 @@ export namespace Prisma {
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSolvedProblemsInput = {
@@ -14520,6 +17746,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProblemUpsertWithoutSolvedByInput = {
@@ -14551,6 +17779,8 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     submissions?: SubmissionUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSolvedByInput = {
@@ -14571,6 +17801,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemInPlaylistCreateWithoutPlaylistInput = {
@@ -14607,6 +17839,8 @@ export namespace Prisma {
     problems?: ProblemCreateNestedManyWithoutUserInput
     submissions?: SubmissionCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPlaylistsInput = {
@@ -14621,6 +17855,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
     solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPlaylistsInput = {
@@ -14667,6 +17903,8 @@ export namespace Prisma {
     problems?: ProblemUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPlaylistsInput = {
@@ -14681,6 +17919,8 @@ export namespace Prisma {
     problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
     solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PlaylistCreateWithoutProblemsInput = {
@@ -14724,6 +17964,8 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutProblemsInput
     submissions?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutProblemsPlaylistsInput = {
@@ -14744,6 +17986,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutProblemsPlaylistsInput = {
@@ -14809,6 +18053,8 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutProblemsNestedInput
     submissions?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutProblemsPlaylistsInput = {
@@ -14829,6 +18075,376 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type UserCreateWithoutLikesInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLikesInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLikesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+  }
+
+  export type ProblemCreateWithoutLikesInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testCases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProblemsInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemUncheckedCreateWithoutLikesInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testCases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    bookmarks?: ProblemBookmarkUncheckedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemCreateOrConnectWithoutLikesInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutLikesInput, ProblemUncheckedCreateWithoutLikesInput>
+  }
+
+  export type UserUpsertWithoutLikesInput = {
+    update: XOR<UserUpdateWithoutLikesInput, UserUncheckedUpdateWithoutLikesInput>
+    create: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLikesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLikesInput, UserUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type UserUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ProblemUpsertWithoutLikesInput = {
+    update: XOR<ProblemUpdateWithoutLikesInput, ProblemUncheckedUpdateWithoutLikesInput>
+    create: XOR<ProblemCreateWithoutLikesInput, ProblemUncheckedCreateWithoutLikesInput>
+    where?: ProblemWhereInput
+  }
+
+  export type ProblemUpdateToOneWithWhereWithoutLikesInput = {
+    where?: ProblemWhereInput
+    data: XOR<ProblemUpdateWithoutLikesInput, ProblemUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type ProblemUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testCases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testCases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
+  }
+
+  export type UserCreateWithoutBookmarksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutUserInput
+    solvedProblems?: ProblemSolvedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBookmarksInput = {
+    id?: string
+    name?: string | null
+    email: string
+    image?: string | null
+    role?: $Enums.UserRole
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    problems?: ProblemUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutUserInput
+    solvedProblems?: ProblemSolvedUncheckedCreateNestedManyWithoutUserInput
+    playlists?: PlaylistUncheckedCreateNestedManyWithoutUserInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBookmarksInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+  }
+
+  export type ProblemCreateWithoutBookmarksInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testCases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProblemsInput
+    submissions?: SubmissionCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemUncheckedCreateWithoutBookmarksInput = {
+    id?: string
+    title: string
+    description: string
+    difficulty: $Enums.Difficulty
+    tags?: ProblemCreatetagsInput | string[]
+    userId: string
+    examples: JsonNullValueInput | InputJsonValue
+    constraints: string
+    hints?: string | null
+    editorial?: string | null
+    testCases: JsonNullValueInput | InputJsonValue
+    codeSnippets: JsonNullValueInput | InputJsonValue
+    referenceSolutions: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
+    solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
+    likes?: ProblemLikeUncheckedCreateNestedManyWithoutProblemInput
+  }
+
+  export type ProblemCreateOrConnectWithoutBookmarksInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+  }
+
+  export type UserUpsertWithoutBookmarksInput = {
+    update: XOR<UserUpdateWithoutBookmarksInput, UserUncheckedUpdateWithoutBookmarksInput>
+    create: XOR<UserCreateWithoutBookmarksInput, UserUncheckedCreateWithoutBookmarksInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBookmarksInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBookmarksInput, UserUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type UserUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutUserNestedInput
+    solvedProblems?: ProblemSolvedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problems?: ProblemUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutUserNestedInput
+    solvedProblems?: ProblemSolvedUncheckedUpdateManyWithoutUserNestedInput
+    playlists?: PlaylistUncheckedUpdateManyWithoutUserNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ProblemUpsertWithoutBookmarksInput = {
+    update: XOR<ProblemUpdateWithoutBookmarksInput, ProblemUncheckedUpdateWithoutBookmarksInput>
+    create: XOR<ProblemCreateWithoutBookmarksInput, ProblemUncheckedCreateWithoutBookmarksInput>
+    where?: ProblemWhereInput
+  }
+
+  export type ProblemUpdateToOneWithWhereWithoutBookmarksInput = {
+    where?: ProblemWhereInput
+    data: XOR<ProblemUpdateWithoutBookmarksInput, ProblemUncheckedUpdateWithoutBookmarksInput>
+  }
+
+  export type ProblemUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testCases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    submissions?: SubmissionUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+  }
+
+  export type ProblemUncheckedUpdateWithoutBookmarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    tags?: ProblemUpdatetagsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    examples?: JsonNullValueInput | InputJsonValue
+    constraints?: StringFieldUpdateOperationsInput | string
+    hints?: NullableStringFieldUpdateOperationsInput | string | null
+    editorial?: NullableStringFieldUpdateOperationsInput | string | null
+    testCases?: JsonNullValueInput | InputJsonValue
+    codeSnippets?: JsonNullValueInput | InputJsonValue
+    referenceSolutions?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
+    solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
+    problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyUserInput = {
@@ -14877,6 +18493,19 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ProblemLikeCreateManyUserInput = {
+    id?: string
+    problemId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkCreateManyUserInput = {
+    id?: string
+    problemId: string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
   export type ProblemUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -14895,6 +18524,8 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutUserInput = {
@@ -14915,6 +18546,8 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
+    likes?: ProblemLikeUncheckedUpdateManyWithoutProblemNestedInput
+    bookmarks?: ProblemBookmarkUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateManyWithoutUserInput = {
@@ -15025,6 +18658,45 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProblemLikeUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problem?: ProblemUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type ProblemLikeUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemLikeUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    problem?: ProblemUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type ProblemBookmarkUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SubmissionCreateManyProblemInput = {
     id?: string
     userId: string
@@ -15049,6 +18721,19 @@ export namespace Prisma {
   export type ProblemInPlaylistCreateManyProblemInput = {
     id?: string
     playlistId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemLikeCreateManyProblemInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type ProblemBookmarkCreateManyProblemInput = {
+    id?: string
+    userId: string
+    note?: string | null
     createdAt?: Date | string
   }
 
@@ -15132,6 +18817,45 @@ export namespace Prisma {
   export type ProblemInPlaylistUncheckedUpdateManyWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemLikeUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type ProblemLikeUncheckedUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemLikeUncheckedUpdateManyWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBookmarksNestedInput
+  }
+
+  export type ProblemBookmarkUncheckedUpdateWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProblemBookmarkUncheckedUpdateManyWithoutProblemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
