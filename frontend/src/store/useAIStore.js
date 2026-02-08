@@ -3,7 +3,7 @@ import { axiosInstance } from "../libs/axios.js";
 import toast from "react-hot-toast";
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent";
 
 export const useAIStore = create((set, get) => ({
     hint: null,
@@ -14,12 +14,16 @@ export const useAIStore = create((set, get) => ({
 
     // Get a hint for the current problem
     getHint: async (problemDescription, userCode, language) => {
-        set({ isLoadingHint: true, error: null });
+        set({ isLoadingHint: true, error: null, hint: null });
+
+        console.log("Getting AI hint...");
+        console.log("API Key present:", !!GEMINI_API_KEY);
 
         try {
             if (!GEMINI_API_KEY) {
+                toast.error("Gemini API key not configured. Please restart the dev server.");
                 set({
-                    hint: "💡 AI hints are not configured. Add VITE_GEMINI_API_KEY to your .env file to enable AI features.",
+                    hint: "💡 AI hints are not configured. Add VITE_GEMINI_API_KEY to your .env file and restart the server.",
                     isLoadingHint: false
                 });
                 return;
@@ -37,6 +41,8 @@ ${userCode || "// No code written yet"}
 
 Give them a SHORT, helpful hint (2-3 sentences max) without giving away the solution. Focus on the algorithm approach or a key concept they might be missing. Do not provide code.`;
 
+            console.log("Calling Gemini API...");
+
             const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -49,18 +55,35 @@ Give them a SHORT, helpful hint (2-3 sentences max) without giving away the solu
                 }),
             });
 
+            console.log("Response status:", response.status);
+
             if (!response.ok) {
-                throw new Error("Failed to get AI hint");
+                const errorData = await response.json().catch(() => ({}));
+                console.error("API Error:", errorData);
+
+                // Check for rate limit error
+                const errorMsg = errorData.error?.message || "";
+                if (errorMsg.includes("quota") || errorMsg.includes("rate") || response.status === 429) {
+                    const retryMatch = errorMsg.match(/retry in ([\d.]+)s/i);
+                    const retrySeconds = retryMatch ? Math.ceil(parseFloat(retryMatch[1])) : 30;
+                    throw new Error(`Rate limited. Please wait ${retrySeconds} seconds and try again.`);
+                }
+
+                throw new Error(errorData.error?.message || `API returned ${response.status}`);
             }
 
             const data = await response.json();
+            console.log("API Response:", data);
+
             const hintText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Unable to generate hint.";
 
+            toast.success("Hint generated!");
             set({ hint: hintText, isLoadingHint: false });
         } catch (error) {
             console.error("AI Hint Error:", error);
+            toast.error(`AI Error: ${error.message}`);
             set({
-                hint: "Unable to get AI hint. Please try again.",
+                hint: `Unable to get AI hint: ${error.message}`,
                 isLoadingHint: false,
                 error: error.message
             });
