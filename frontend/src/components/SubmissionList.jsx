@@ -10,6 +10,7 @@ import {
   ChevronUp,
   Code,
 } from "lucide-react";
+import EmptyState from "./EmptyState";
 
 const SubmissionsList = ({ submissions, isLoading }) => {
   const [expandedId, setExpandedId] = useState(null);
@@ -82,9 +83,11 @@ const SubmissionsList = ({ submissions, isLoading }) => {
   // No submissions state
   if (!submissions?.length) {
     return (
-      <div className="text-center p-8">
-        <div className="text-base-content/70">No submissions yet</div>
-      </div>
+      <EmptyState
+        type="submissions"
+        title="No submissions yet"
+        description="Submit your code to see your submission history here."
+      />
     );
   }
 

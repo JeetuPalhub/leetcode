@@ -6,6 +6,7 @@ import { useActions } from "../store/useActions";
 import AddToPlaylistModal from "./AddToPlaylist";
 import CreatePlaylistModal from "./CreatePlaylistModal";
 import { usePlaylistStore } from "../store/usePlaylistStore";
+import EmptyState from "./EmptyState";
 
 
 const ProblemsTable = ({ problems }) => {
@@ -164,13 +165,12 @@ const ProblemsTable = ({ problems }) => {
                     </td>
                     <td>
                       <span
-                        className={`badge font-semibold text-xs text-white ${
-                          problem.difficulty === "EASY"
+                        className={`badge font-semibold text-xs text-white ${problem.difficulty === "EASY"
                             ? "badge-success"
                             : problem.difficulty === "MEDIUM"
-                            ? "badge-warning"
-                            : "badge-error"
-                        }`}
+                              ? "badge-warning"
+                              : "badge-error"
+                          }`}
                       >
                         {problem.difficulty}
                       </span>
@@ -204,8 +204,14 @@ const ProblemsTable = ({ problems }) => {
               })
             ) : (
               <tr>
-                <td colSpan={5} className="text-center py-6 text-gray-500">
-                  No problems found.
+                <td colSpan={5} className="p-0">
+                  <EmptyState
+                    type="problems"
+                    title="No problems found"
+                    description={search || difficulty !== "ALL" || selectedTag !== "ALL"
+                      ? "Try adjusting your search filters to find problems."
+                      : "Problems will appear here once they are added."}
+                  />
                 </td>
               </tr>
             )}
@@ -240,7 +246,7 @@ const ProblemsTable = ({ problems }) => {
         onClose={() => setIsCreateModalOpen(false)}
         onSubmit={handleCreatePlaylist}
       />
-      
+
       <AddToPlaylistModal
         isOpen={isAddToPlaylistModalOpen}
         onClose={() => setIsAddToPlaylistModalOpen(false)}
