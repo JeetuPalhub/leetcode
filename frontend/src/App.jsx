@@ -14,11 +14,13 @@ import Layout from "./components/Layout";
 import AddProblem from "./pages/AddProblem";
 import Profile from "./pages/Profile";
 import AdminRoute from "./components/AdminRoute";
+import Roadmap from "./pages/Roadmap";
+import ContestList from "./pages/ContestList";
+import ContestDetails from "./pages/ContestDetails";
+import LeaderboardPage from "./pages/LeaderboardPage";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
-
-
 
   useEffect(() => {
     checkAuth();
@@ -33,13 +35,28 @@ const App = () => {
 
   return (
     <div className="flex flex-col items-center justify-start  ">
-      {/* <Navbar/> */}
       <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
             index
             element={authUser ? <HomePage /> : <LandingPage />}
+          />
+          <Route
+            path="roadmap"
+            element={authUser ? <Roadmap /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="contests"
+            element={authUser ? <ContestList /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="contest/:id"
+            element={authUser ? <ContestDetails /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="leaderboard"
+            element={authUser ? <LeaderboardPage /> : <Navigate to="/login" />}
           />
         </Route>
         <Route

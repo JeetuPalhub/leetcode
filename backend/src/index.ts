@@ -11,6 +11,9 @@ import playlistRoutes from './routes/playlist.routes.js';
 import submissionRoutes from './routes/submission.routes.js';
 import userRoutes from './routes/user.routes.js';
 import interactionRoutes from './routes/interaction.routes.js';
+import contestRoutes from './routes/contest.routes.js';
+import aiRoutes from './routes/ai.routes.js';
+
 
 dotenv.config();
 
@@ -34,9 +37,13 @@ app.use('/api/v1/submissions', submissionRoutes);
 app.use('/api/v1/playlist', playlistRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/interactions', interactionRoutes);
+app.use('/api/v1/contest', contestRoutes);
+app.use('/api/v1/ai', aiRoutes);
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 });
+
