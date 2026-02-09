@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { db } from '../libs/db.js';
 import { executeBatchWithPiston, getLanguageName } from '../libs/piston.libs.js';
 import { ExecuteCodeBody } from '../types/index.js';
+import { getDriverCode } from '../libs/driverCode.js';
 
 // Main controller function to handle code execution and submission using Piston API
 export const executeCode = async (req: Request, res: Response): Promise<void> => {
@@ -27,11 +28,26 @@ export const executeCode = async (req: Request, res: Response): Promise<void> =>
             return;
         }
 
+
+
+        // ...
+
         console.log('🚀 Executing code with Piston API...');
         console.log(`Language ID: ${language_id}, Test cases: ${stdin.length}`);
 
+        // Fetch problem to identify if driver injection is needed
+        const problem = await db.problem.findUnique({
+            where: { id: problemId },
+            select: { title: true }
+        });
+
+        const languageName = getLanguageName(language_id).toLowerCase();
+        const codeToExecute = problem
+            ? getDriverCode(problem.title, languageName, source_code)
+            : source_code;
+
         // 2. Execute all test cases using Piston API
-        const results = await executeBatchWithPiston(source_code, language_id, stdin);
+        const results = await executeBatchWithPiston(codeToExecute, language_id, stdin);
 
         // 3. Analyze test results
         let allPassed = true;
