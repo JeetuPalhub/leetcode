@@ -52,7 +52,11 @@ export const executeCode = async (req: Request, res: Response): Promise<void> =>
         // 3. Analyze test results
         let allPassed = true;
         const detailedResults = results.map((result, i) => {
-            const stdout = result.stdout?.trim() || null;
+            let stdout = result.stdout?.trim() || '';
+            if (result.stderr) {
+                stdout += `\nError: ${result.stderr}`;
+            }
+            stdout = stdout.trim() || null;
             const expected_output = expected_outputs[i]?.trim();
             const passed = stdout === expected_output;
 

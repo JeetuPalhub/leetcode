@@ -46,13 +46,13 @@
 
 ## 📸 Screenshots
 
-| Landing Page | Problem Interface |
+| Landing Page | Login & Editor |
 |:---:|:---:|
-| <img src="./screenshots/landing.webp" width="400" alt="Landing Page" /> | <img src="./screenshots/problem.webp" width="400" alt="Problem UI" /> |
+| <img src="./screenshots/landing.png" width="400" alt="Landing Page" /> | <img src="./screenshots/login.png" width="400" alt="Login & Editor" /> |
 
-| AI Roadmap | Profile & Stats |
+| All Problems | Problem Interface |
 |:---:|:---:|
-| <img src="./screenshots/roadmap.png" width="400" alt="Roadmap" /> | <img src="./screenshots/profile.png" width="400" alt="Profile" /> |
+| <img src="./screenshots/problems.png" width="400" alt="All Problems" /> | <img src="./screenshots/problem.png" width="400" alt="Problem UI" /> |
 
 
 ---

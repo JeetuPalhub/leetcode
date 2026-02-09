@@ -55,31 +55,31 @@ try {
 
         if (defMatch) {
             const funcName = defMatch[1];
-            const argsStr = defMatch[2]; // "self, nums, target" or "nums, target"
+            const argsStr = defMatch[2];
             let argNames = argsStr.split(',').map(s => s.trim()).filter(s => s);
+            // Remove 'self' if present (e.g. inside class methods)
+            argNames = argNames.filter(n => n !== 'self');
+            const argCount = argNames.length;
 
-            // Remove 'self' if present (class method vs standalone)
-            // But typical LeetCode Python is standalone "def twoSum(self, ...)" inside class Solution?
-            // OR standalone "def twoSum(...)".
-            // If user writes standalone function (no class), 'self' is not there.
-            // If parsing "def twoSum(self, ...)" inside class, we need to instantiate class.
+            const inputParsingLogic = `
+        # Read all lines and filter empty ones
+        raw_input = sys.stdin.read().split('\\n')
+        input_data = [line for line in raw_input if line.strip()]
+        
+        args = []
+        # Parse only the expected number of arguments
+        for i, line in enumerate(input_data):
+            if i >= ${argCount}: break
+            try:
+                args.append(json.loads(line))
+            except:
+                args.append(line)
+            `;
 
-            // Checking if it's inside a class is hard with regex.
-            // Piston setup:
-            // If user code is:
-            // class Solution:
-            //    def twoSum(self, nums, target): ...
-
-            // Then we need:
-            // sol = Solution()
-            // print(sol.twoSum(...))
-
-            // If checking for "class Solution":
+            // Check for Class Solution
             const hasClassSolution = sourceCode.includes("class Solution");
 
             if (hasClassSolution) {
-                // Assume method is inside Solution
-                // We need to find the method name inside Solution? usually whatever is defined.
                 return `
 import sys
 import json
@@ -89,30 +89,11 @@ ${sourceCode}
 # Driver Code
 if __name__ == "__main__":
     try:
-        input_data = sys.stdin.read().strip().split('\\n')
+${inputParsingLogic}
         
-        args = []
-        # Skip 'self' in argument count
-        # parse args excluding self
-        # Implementation detail: generic parsing is hard in python regex given self.
-        
-        # Hardcode fallback for common structure
-        # If class Solution exists, instantiate it.
         sol = Solution()
-        
-        # Find method to call - assume the first method defined or specific name?
-        # Helper: iterate methods?
-        # Or just use the one we found with regex.
-        
         method_name = "${funcName}"
         method = getattr(sol, method_name)
-        
-        # Parse inputs
-        for i, line in enumerate(input_data):
-            try:
-                args.append(json.loads(line))
-            except:
-                args.append(line)
         
         result = method(*args)
         print(json.dumps(result))
@@ -120,7 +101,6 @@ if __name__ == "__main__":
         print(str(e), file=sys.stderr)
 `;
             } else {
-                // Standalone function
                 return `
 import sys
 import json
@@ -130,13 +110,7 @@ ${sourceCode}
 # Driver Code
 if __name__ == "__main__":
     try:
-        input_data = sys.stdin.read().strip().split('\\n')
-        args = []
-        for i, line in enumerate(input_data):
-            try:
-                args.append(json.loads(line))
-            except:
-                args.append(line)
+${inputParsingLogic}
         
         result = ${funcName}(*args)
         print(json.dumps(result))

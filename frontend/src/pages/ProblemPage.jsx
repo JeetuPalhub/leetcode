@@ -47,6 +47,14 @@ const ProblemPage = () => {
   const [customTestCases, setCustomTestCases] = useState([{ input: "", expectedOutput: "" }]);
   const [showCustomTests, setShowCustomTests] = useState(false);
   const editorRef = useRef(null);
+  const resultRef = useRef(null);
+
+  // Auto-scroll to result when submission updates
+  useEffect(() => {
+    if (submission && resultRef.current) {
+      resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [submission]);
 
   const { executeCode, submission, isExecuting, clearExecution } = useExecutionStore();
 
@@ -509,7 +517,7 @@ const ProblemPage = () => {
           </div>
         </div>
 
-        <div className="card bg-base-100 shadow-xl mt-6">
+        <div ref={resultRef} className="card bg-base-100 shadow-xl mt-6">
           <div className="card-body">
             {submission ? (
               <Submission submission={submission} />

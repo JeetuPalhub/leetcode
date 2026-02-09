@@ -3,21 +3,32 @@ import { CheckCircle2, XCircle, Clock, MemoryStick as Memory } from 'lucide-reac
 import Editor from '@monaco-editor/react';
 
 const SubmissionResults = ({ submission }) => {
+  if (!submission) return null;
+
+  // Safe parsing helper
+  const safeParse = (str) => {
+    try {
+      return JSON.parse(str || '[]');
+    } catch {
+      return [];
+    }
+  };
+
   // Parse stringified arrays
-  const memoryArr = JSON.parse(submission.memory || '[]');
-  const timeArr = JSON.parse(submission.time || '[]');
+  const memoryArr = safeParse(submission.memory);
+  const timeArr = safeParse(submission.time);
 
-  // Calculate averages
-  const avgMemory = memoryArr
-    .map(m => parseFloat(m)) // remove ' KB' using parseFloat
-    .reduce((a, b) => a + b, 0) / memoryArr.length;
+  // Calculate averages safely
+  const calculateAvg = (arr) => arr.length
+    ? arr.map(m => parseFloat(m)).reduce((a, b) => a + b, 0) / arr.length
+    : 0;
 
-  const avgTime = timeArr
-    .map(t => parseFloat(t)) // remove ' s' using parseFloat
-    .reduce((a, b) => a + b, 0) / timeArr.length;
+  const avgMemory = calculateAvg(memoryArr);
+  const avgTime = calculateAvg(timeArr);
 
-  const passedTests = submission.testCases.filter(tc => tc.passed).length;
-  const totalTests = submission.testCases.length;
+  const testCases = submission.testCases || [];
+  const passedTests = testCases.filter(tc => tc.passed).length;
+  const totalTests = testCases.length || 1;
   const successRate = (passedTests / totalTests) * 100;
 
   // Format output for display
@@ -39,7 +50,7 @@ const SubmissionResults = ({ submission }) => {
             <h3 className="card-title text-sm">Status</h3>
             <div className={`text-lg font-bold ${submission.status === 'Accepted' ? 'text-success' : 'text-error'
               }`}>
-              {submission.status}
+              {submission.status || 'Unknown'}
             </div>
           </div>
         </div>
@@ -48,7 +59,7 @@ const SubmissionResults = ({ submission }) => {
           <div className="card-body p-4">
             <h3 className="card-title text-sm">Success Rate</h3>
             <div className="text-lg font-bold">
-              {successRate.toFixed(1)}%
+              {isNaN(successRate) ? '0.0' : successRate.toFixed(1)}%
             </div>
           </div>
         </div>
@@ -60,7 +71,7 @@ const SubmissionResults = ({ submission }) => {
               Avg. Runtime
             </h3>
             <div className="text-lg font-bold">
-              {avgTime.toFixed(3)} s
+              {isNaN(avgTime) ? '0.000' : avgTime.toFixed(3)} s
             </div>
           </div>
         </div>
@@ -72,7 +83,7 @@ const SubmissionResults = ({ submission }) => {
               Avg. Memory
             </h3>
             <div className="text-lg font-bold">
-              {avgMemory.toFixed(0)} KB
+              {isNaN(avgMemory) ? '0' : avgMemory.toFixed(0)} KB
             </div>
           </div>
         </div>
@@ -83,8 +94,8 @@ const SubmissionResults = ({ submission }) => {
         <div className="card-body">
           <h2 className="card-title mb-4">Test Cases Results</h2>
           <div className="space-y-4">
-            {submission.testCases.map((testCase, index) => (
-              <div key={testCase.id} className={`card ${testCase.passed ? 'bg-success/10 border border-success/30' : 'bg-error/10 border border-error/30'}`}>
+            {testCases.map((testCase, index) => (
+              <div key={testCase.id || index} className={`card ${testCase.passed ? 'bg-success/10 border border-success/30' : 'bg-error/10 border border-error/30'}`}>
                 <div className="card-body p-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-semibold">Test Case {index + 1}</span>
@@ -100,7 +111,7 @@ const SubmissionResults = ({ submission }) => {
                           Failed
                         </div>
                       )}
-                      <span className="text-xs text-base-content/60">{testCase.time} | {testCase.memory}</span>
+                      <span className="text-xs text-base-content/60">{testCase.time || '-'} | {testCase.memory || '-'}</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
