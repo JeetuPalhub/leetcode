@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
 dotenv.config(); // Must be FIRST — before any imports that use process.env
+import { env } from './config/env.js';
 
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import pinoHttp from 'pino-http';
+import logger from './config/logger.js';
 import { apiLimiter, codeExecutionLimiter, aiLimiter } from './middlewares/rateLimiter.js';
 
 import authRoutes from './routes/auth.routes.js';
@@ -33,7 +35,8 @@ app.use(
         credentials: true,
     })
 );
-app.use(morgan('dev'));
+// @ts-ignore — pino-http types export differently but the default import works at runtime
+app.use(pinoHttp({ logger }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -71,13 +74,13 @@ app.use((_req: Request, res: Response) => {
 
 // Global error handler middleware
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
-    console.error('Unhandled Error:', err.stack || err.message);
+    logger.error({ err }, 'Unhandled Error');
     res.status(500).json({ error: 'Internal Server Error', message: err.message });
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
+    logger.info(`Server is running on http://localhost:${PORT}`);
     initCronJobs();
 });

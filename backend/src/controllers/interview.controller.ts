@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { db } from "../libs/db.js";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { env } from '../config/env.js';
 
 export const startInterview = async (req: any, res: Response) => {
     try {
@@ -129,7 +130,7 @@ export const submitInterview = async (req: any, res: Response) => {
             recommendation: solvedCount === 3 ? "Ready for top-tier interviews!" : "Practice more Medium level strings."
         };
 
-        const apiKey = process.env.GEMINI_API_KEY;
+        const apiKey = env.GEMINI_API_KEY;
         if (apiKey) {
             try {
                 const genAI = new GoogleGenerativeAI(apiKey);
@@ -200,7 +201,7 @@ export const generateInterviewHint = async (req: any, res: Response) => {
         }
 
         // Use Gemini to generate a hint
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+        const genAI = new GoogleGenerativeAI(env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const prompt = `

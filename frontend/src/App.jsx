@@ -4,6 +4,7 @@ import { useAuthStore } from "./store/useAuthStore";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { features } from "./config/features";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -47,95 +48,97 @@ const App = () => {
   return (
     <div className="flex flex-col w-full min-h-screen">
       <Toaster />
-      <Suspense fallback={pageFallback}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
+      <ErrorBoundary fallbackTitle="Something went wrong">
+        <Suspense fallback={pageFallback}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={authUser ? <HomePage /> : <LandingPage />}
+              />
+              <Route
+                path="roadmap"
+                element={
+                  authUser
+                    ? (features.aiRoadmap ? <Roadmap /> : <Navigate to="/" />)
+                    : <Navigate to="/login" />
+                }
+              />
+              <Route
+                path="contests"
+                element={
+                  authUser
+                    ? (features.contests ? <ContestList /> : <Navigate to="/" />)
+                    : <Navigate to="/login" />
+                }
+              />
+              <Route
+                path="contest/:id"
+                element={
+                  authUser
+                    ? (features.contests ? <ContestDetails /> : <Navigate to="/" />)
+                    : <Navigate to="/login" />
+                }
+              />
+              <Route
+                path="leaderboard"
+                element={
+                  authUser
+                    ? (features.leaderboard ? <LeaderboardPage /> : <Navigate to="/" />)
+                    : <Navigate to="/login" />
+                }
+              />
+              <Route
+                path="mock-interview"
+                element={authUser ? <MockInterviewPage /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="mock-interview/:id"
+                element={authUser ? <MockInterviewPage /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="submission/:id"
+                element={authUser ? <SubmissionDetails /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="problems"
+                element={authUser ? <ProblemsList /> : <Navigate to="/login" />}
+              />
+            </Route>
             <Route
-              index
-              element={authUser ? <HomePage /> : <LandingPage />}
+              path="/signup"
+              element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
             />
             <Route
-              path="roadmap"
-              element={
-                authUser
-                  ? (features.aiRoadmap ? <Roadmap /> : <Navigate to="/" />)
-                  : <Navigate to="/login" />
-              }
+              path="/login"
+              element={!authUser ? <LoginPage /> : <Navigate to="/" />}
             />
-            <Route
-              path="contests"
-              element={
-                authUser
-                  ? (features.contests ? <ContestList /> : <Navigate to="/" />)
-                  : <Navigate to="/login" />
-              }
-            />
-            <Route
-              path="contest/:id"
-              element={
-                authUser
-                  ? (features.contests ? <ContestDetails /> : <Navigate to="/" />)
-                  : <Navigate to="/login" />
-              }
-            />
-            <Route
-              path="leaderboard"
-              element={
-                authUser
-                  ? (features.leaderboard ? <LeaderboardPage /> : <Navigate to="/" />)
-                  : <Navigate to="/login" />
-              }
-            />
-            <Route
-              path="mock-interview"
-              element={authUser ? <MockInterviewPage /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="mock-interview/:id"
-              element={authUser ? <MockInterviewPage /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="submission/:id"
-              element={authUser ? <SubmissionDetails /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="problems"
-              element={authUser ? <ProblemsList /> : <Navigate to="/login" />}
-            />
-          </Route>
-          <Route
-            path="/signup"
-            element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/login"
-            element={!authUser ? <LoginPage /> : <Navigate to="/" />}
-          />
 
-          <Route
-            path="/problem/:id"
-            element={authUser ? <ProblemPage /> : <Navigate to="/login" />}
-          />
-          <Route element={<AdminRoute />}>
             <Route
-              path="/add-problem"
-              element={authUser ? <AddProblem /> : <Navigate to="/login" />}
+              path="/problem/:id"
+              element={authUser ? <ProblemPage /> : <Navigate to="/login" />}
             />
+            <Route element={<AdminRoute />}>
+              <Route
+                path="/add-problem"
+                element={authUser ? <AddProblem /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="/edit-problem/:id"
+                element={authUser ? <EditProblem /> : <Navigate to="/login" />}
+              />
+            </Route>
+
             <Route
-              path="/edit-problem/:id"
-              element={authUser ? <EditProblem /> : <Navigate to="/login" />}
+              path="/profile/:userId?"
+              element={authUser ? <Profile /> : <Navigate to="/login" />}
             />
-          </Route>
 
-          <Route
-            path="/profile/:userId?"
-            element={authUser ? <Profile /> : <Navigate to="/login" />}
-          />
-
-          {/* Catch-all 404 route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+            {/* Catch-all 404 route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

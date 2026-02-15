@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { db } from '../libs/db.js';
 import { AuthUser, JwtPayload } from '../types/index.js';
+import { env } from '../config/env.js';
 
 // Extend Express Request globally
 declare global {
@@ -27,7 +28,7 @@ export const authenticate = async (
 
         let decoded: JwtPayload;
         try {
-            decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+            decoded = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
         } catch (err) {
             res.status(401).json({ message: 'Unauthorized - Invalid Token' });
             return;

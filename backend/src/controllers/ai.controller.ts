@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { db } from "../libs/db.js";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { env } from '../config/env.js';
 
 export const generateAIRoadmap = async (req: Request, res: Response) => {
     try {
@@ -39,7 +40,7 @@ export const generateAIRoadmap = async (req: Request, res: Response) => {
             .slice(0, 5);
 
         let roadmapContent: unknown = DUMMY_ROADMAP;
-        const apiKey = process.env.GEMINI_API_KEY;
+        const apiKey = env.GEMINI_API_KEY;
 
         if (apiKey) {
             // 3. Prompt engineering for Gemini

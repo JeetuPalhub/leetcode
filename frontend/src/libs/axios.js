@@ -1,7 +1,8 @@
 import axios from "axios";
+import env from "../config/env.js";
 
 export const axiosInstance = axios.create({
-  baseURL: (import.meta.env.VITE_BACKEND_API_BASEURL || "http://localhost:3000/api/v1").trim(),
+  baseURL: env.BACKEND_API_BASEURL,
   withCredentials: true,
 });
 

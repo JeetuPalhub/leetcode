@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { db } from '../libs/db.js';
 import { RegisterBody, LoginBody } from '../types/index.js';
+import { env } from '../config/env.js';
 
 // REGISTER
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -26,14 +27,14 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             },
         });
 
-        const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET!, {
+        const token = jwt.sign({ id: newUser.id }, env.JWT_SECRET, {
             expiresIn: '7d',
         });
 
         res.cookie('jwt', token, {
             httpOnly: true,
             sameSite: 'strict',
-            secure: process.env.NODE_ENV !== 'development',
+            secure: env.NODE_ENV !== 'development',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -71,14 +72,14 @@ export const login = async (req: Request, res: Response): Promise<void> => {
             return;
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
+        const token = jwt.sign({ id: user.id }, env.JWT_SECRET, {
             expiresIn: '7d',
         });
 
         res.cookie('jwt', token, {
             httpOnly: true,
             sameSite: 'strict',
-            secure: process.env.NODE_ENV !== 'development',
+            secure: env.NODE_ENV !== 'development',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -104,7 +105,7 @@ export const logout = async (_req: Request, res: Response): Promise<void> => {
         res.clearCookie('jwt', {
             httpOnly: true,
             sameSite: 'strict',
-            secure: process.env.NODE_ENV !== 'development',
+            secure: env.NODE_ENV !== 'development',
         });
 
         res.status(200).json({ success: true, message: 'Logout successful' });

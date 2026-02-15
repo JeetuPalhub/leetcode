@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Judge0Submission, Judge0Result } from '../types/index.js';
+import { env } from '../config/env.js';
 
-const getJudge0Url = () => process.env.JUDGE0_API_URL || 'http://localhost:2358';
+const getJudge0Url = () => env.JUDGE0_API_URL;
 
 const languageMap: Record<string, number> = {
     C: 50,
