@@ -49,7 +49,7 @@ A full-stack LeetCode-inspired coding platform built with React, Node.js, Expres
 ### Prerequisites
 - Node.js 18+
 - PostgreSQL database
-- Judge0 API instance (for code execution)
+- **Judge0 API Key** (RapidAPI) or a local Judge0 instance
 
 ### 1. Clone and Install
 
@@ -70,7 +70,7 @@ cd ../frontend && npm install
 ```env
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB
 JWT_SECRET=your-secret
-JUDGE0_API_URL=your-judge0-api-url
+RAPIDAPI_KEY=your-rapidapi-key # Get one from rapidapi.com/judge0-official/api/judge0-ce/
 ```
 
 **Frontend** (`frontend/.env.local`):

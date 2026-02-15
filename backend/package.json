@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
+    "postinstall": "prisma generate",
+    "migrate": "prisma migrate deploy",
     "start": "node dist/index.js",
     "smoke": "node scripts/smoke-api.mjs",
     "format": "prettier --write \"src/**/*.ts\"",

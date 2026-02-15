@@ -7,12 +7,15 @@ const envSchema = z.object({
     DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
     JWT_SECRET: z.string().min(1, 'JWT_SECRET is required'),
     JUDGE0_API_URL: z.string().url().optional().default('http://localhost:2358'),
+    RAPIDAPI_KEY: z.string().optional(),
+    RAPIDAPI_HOST: z.string().optional().default('judge0-ce.p.rapidapi.com'),
     GEMINI_API_KEY: z.string().optional().default(''),
     PORT: z.coerce.number().optional().default(3000),
     NODE_ENV: z
         .enum(['development', 'production', 'test'])
         .optional()
         .default('development'),
+    FRONTEND_URL: z.string().optional().default('http://localhost:5173'),
 });
 
 export type Env = z.infer<typeof envSchema>;

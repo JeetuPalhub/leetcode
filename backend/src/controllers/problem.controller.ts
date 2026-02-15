@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { db } from '../libs/db.js';
 import {
+    executeBatchWithJudge0,
     getJudge0LanguageId,
-} from '../libs/problem.libs.js';
-import { executeBatchWithPiston } from '../libs/piston.libs.js';
+} from '../libs/judge0.libs.js';
 import { CreateProblemBody, UpdateProblemBody } from '../types/index.js';
 
 // Final Create Problem Handler
@@ -45,13 +45,13 @@ export const createProblem = async (req: Request, res: Response): Promise<void> 
             const inputs = testCases.map((tc) => tc.input);
 
             // Step 2.3: Execute all test cases using Piston
-            const results = await executeBatchWithPiston(solutionCode, languageId, inputs);
+            const results = await executeBatchWithJudge0(solutionCode, languageId, inputs);
 
             // Step 2.4: Validate results
             for (let i = 0; i < results.length; i++) {
                 const result = results[i];
                 const expectedOutput = testCases[i].output.trim();
-                const actualOutput = result.stdout.trim();
+                const actualOutput = (result.stdout || '').trim();
 
                 if (actualOutput !== expectedOutput) {
                     res.status(400).json({
@@ -60,7 +60,7 @@ export const createProblem = async (req: Request, res: Response): Promise<void> 
                             input: inputs[i],
                             expected: expectedOutput,
                             actual: actualOutput,
-                            error: result.stderr
+                            error: result.stderr || ''
                         },
                     });
                     return;
@@ -200,13 +200,13 @@ export const updateProblem = async (req: Request, res: Response): Promise<void> 
             const inputs = testCases.map((tc) => tc.input);
 
             // Execute all test cases using Piston
-            const results = await executeBatchWithPiston(solutionCode, languageId, inputs);
+            const results = await executeBatchWithJudge0(solutionCode, languageId, inputs);
 
             // Validate results
             for (let i = 0; i < results.length; i++) {
                 const result = results[i];
                 const expectedOutput = testCases[i].output.trim();
-                const actualOutput = result.stdout.trim();
+                const actualOutput = (result.stdout || '').trim();
 
                 if (actualOutput !== expectedOutput) {
                     res.status(400).json({
@@ -215,7 +215,7 @@ export const updateProblem = async (req: Request, res: Response): Promise<void> 
                             input: inputs[i],
                             expected: expectedOutput,
                             actual: actualOutput,
-                            error: result.stderr
+                            error: result.stderr || ''
                         },
                     });
                     return;

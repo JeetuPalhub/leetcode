@@ -86,24 +86,6 @@ export interface AddProblemsToPlaylistBody {
     problemIds: string[];
 }
 
-// Piston API Types
-export interface PistonLanguageConfig {
-    language: string;
-    version: string;
-}
-
-export interface PistonExecutionResult {
-    stdout: string;
-    stderr: string;
-    compile_output: string | null;
-    status: {
-        id: number;
-        description: string;
-    };
-    time: string;
-    memory: number;
-}
-
 // Judge0 Types
 export interface Judge0Submission {
     source_code: string;

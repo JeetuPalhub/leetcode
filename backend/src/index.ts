@@ -31,7 +31,7 @@ const app: Application = express();
 // Middlewares
 app.use(
     cors({
-        origin: 'http://localhost:5173',
+        origin: env.FRONTEND_URL,
         credentials: true,
     })
 );

@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { db } from '../libs/db.js';
-import { executeBatchWithPiston, getLanguageName } from '../libs/piston.libs.js';
+import { executeBatchWithJudge0, getJudge0LanguageId, getLanguageName } from '../libs/judge0.libs.js';
 import { ExecuteCodeBody } from '../types/index.js';
 import { getDriverCode } from '../libs/driverCode.js';
 
-// Main controller function to handle code execution and submission using Piston API
+// Main controller function to handle code execution and submission using Judge0 API
 export const executeCode = async (req: Request, res: Response): Promise<void> => {
     const { source_code, language_id, stdin, expected_outputs, problemId } =
         req.body as ExecuteCodeBody;
@@ -28,11 +28,7 @@ export const executeCode = async (req: Request, res: Response): Promise<void> =>
             return;
         }
 
-
-
-        // ...
-
-        console.log('🚀 Executing code with Piston API...');
+        console.log('🚀 Executing code with Judge0 API...');
         console.log(`Language ID: ${language_id}, Test cases: ${stdin.length}`);
 
         // Fetch problem to identify if driver injection is needed
@@ -46,19 +42,18 @@ export const executeCode = async (req: Request, res: Response): Promise<void> =>
             ? getDriverCode(problem.title, languageName, source_code)
             : source_code;
 
-        // 2. Execute all test cases using Piston API
-        const results = await executeBatchWithPiston(codeToExecute, language_id, stdin);
+        // 2. Execute all test cases using Judge0 API (batch)
+        const results = await executeBatchWithJudge0(codeToExecute, language_id, stdin, expected_outputs);
 
         // 3. Analyze test results
         let allPassed = true;
         const detailedResults = results.map((result, i) => {
-            let stdout = result.stdout?.trim() || '';
-            if (result.stderr) {
-                stdout += `\nError: ${result.stderr}`;
-            }
-            stdout = stdout.trim();
-            const expected_output = expected_outputs[i]?.trim();
-            const passed = stdout === expected_output;
+            const stdout = result.stdout?.trim() || '';
+            const stderr = result.stderr?.trim() || '';
+            const compile_output = result.compile_output?.trim() || '';
+
+            // Judge0 status 3 is "Accepted"
+            const passed = result.status.id === 3;
 
             if (!passed) allPassed = false;
 
@@ -66,9 +61,9 @@ export const executeCode = async (req: Request, res: Response): Promise<void> =>
                 testCase: i + 1,
                 passed,
                 stdout,
-                expected: expected_output,
-                stderr: result.stderr || null,
-                compile_output: result.compile_output || null,
+                expected: expected_outputs[i]?.trim(),
+                stderr: stderr || null,
+                compile_output: compile_output || null,
                 status: result.status.description,
                 memory: result.memory ? `${result.memory} KB` : undefined,
                 time: result.time ? `${result.time} s` : undefined,
