@@ -48,7 +48,9 @@ Deploy the `frontend` folder using the standard Vite preset:
 
 1. **CORS Configuration**: Ensure the backend allows requests from your Vercel frontend URL.
 2. **API Path**: Double-check that `VITE_BACKEND_API_BASEURL` ends with `/api/v1`.
-3. **Database Migrations**: Check the Render logs to verify that `npm run migrate` (Prisma) finished successfully.
+3. **Database Population**: If the problem list is empty, update your Render **Start Command** to:
+   `npx prisma db push && npm run seed && npm start`
+   Run this once to populate sample problems, then you can change it back to `npm start`.
 4. **Health Check**: Visit your frontend URL and verify that you can register and see the problem list.
 
 ---
