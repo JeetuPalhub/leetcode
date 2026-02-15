@@ -27,9 +27,6 @@
 ### ✨ A Premium Dashboard
 ![Homepage](./screenshots/homepage.png)
 
-### ✨ A Premium Dashboard
-![Homepage](./screenshots/homepage.png)
-
 ### 💻 Professional Editor Experience
 *Featuring Monaco Editor, resizable split panels, and instant execution results.*
 ![Problem Page](./screenshots/problem-page.png)
