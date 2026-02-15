@@ -11,28 +11,31 @@
 
 ---
 
-### 🚀 Level up your coding skills with LeetLab
+### 🚀 Level Up Your Coding Skills with LeetLab
 
 **LeetLab** is a high-performance, full-stack LeetCode clone designed for developers who want a seamless, fast, and intelligent coding environment. Built with a modern tech stack and featuring a **triple-layer execution engine**, LeetLab allows you to solve 50+ problems with real-time feedback and AI assistance.
 
-[**Explore the Code**](https://github.com/JeetuPalhub/leetlab) • [**Setup Guide**](file:///c:/Users/jeetu%20Pal%20cr/Desktop/leetlab-main/deployment.md) • [**Report Bug**](https://github.com/JeetuPalhub/leetlab/issues)
+[**Explore the Code**](https://github.com/JeetuPalhub/leetlab) • [**Setup Guide**](./deployment.md) • [**Report Bug**](https://github.com/JeetuPalhub/leetlab/issues)
 
 ---
 
 ## 📸 Visual Showcase
 
-### 🚀 Stunning Landing Page
-![Landing Page](./screenshots/landing-page.png)
+### 🏠 Stunning Landing Page
+> Experience a sleek, modern entry point designed to inspire.
+![Landing Page](./screenshots/landing.png)
 
-### ✨ A Premium Dashboard
-![Homepage](./screenshots/homepage.png)
+### 📊 Premium Dashboard
+> Manage your progress and explore problems with ease.
+![Dashboard](./screenshots/dashboard.png)
 
 ### 💻 Professional Editor Experience
-*Featuring Monaco Editor, resizable split panels, and instant execution results.*
-![Problem Page](./screenshots/problem-page.png)
+> Featuring Monaco Editor, resizable split panels, and instant execution results.
+![Editor](./screenshots/editor.png)
 
-### 📊 Comprehensive Problem List
-![Problems List](./screenshots/problems-list.png)
+### 📝 Comprehensive Problem List
+> Filter and find challenges tailored to your skill level.
+![Problems List](./screenshots/problems.png)
 
 ---
 
@@ -51,7 +54,7 @@
 
 ---
 
-## 🛠️ Built With A Modern Stack
+## 🛠️ Tech Stack
 
 | Category | Tools |
 | :--- | :--- |
@@ -63,15 +66,17 @@
 
 ---
 
-## 🚀 Quick Start in 5 Minutes
+## 🚀 Quick Start
 
-### 1️⃣ Clone the Repo
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/JeetuPalhub/leetlab.git
 cd leetlab
 ```
 
-### 2️⃣ Install Everything
+### 2️⃣ Project Setup
+We recommend setting up both the backend and frontend:
+
 ```bash
 # Setup Backend
 cd backend && npm install
@@ -80,33 +85,34 @@ cd backend && npm install
 cd ../frontend && npm install
 ```
 
-### 3️⃣ Configure Environment
-**Backend (`backend/.env`)**:
+### 3️⃣ Configuration
+Create a `.env` file in the `backend` directory:
+
 ```env
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DB
 JWT_SECRET=your-secret-key
 RAPIDAPI_KEY=your-key # (Optional) For C++/Java support
 ```
 
-### 4️⃣ Fire It Up!
+### 4️⃣ Run the Application
 ```bash
-# Start Backend
+# Terminal 1: Backend
 cd backend && npm run dev
 
-# Start Frontend
-cd ../frontend && npm run dev
+# Terminal 2: Frontend
+cd frontend && npm run dev
 ```
-Visit **[http://localhost:5173](http://localhost:5173)** and start coding! 🚀
+Visit **[http://localhost:5173](http://localhost:5173)** to start coding! 🚀
 
 ---
 
-## 📁 Project Architecture
+## 📁 Project Structure
 
-```bash
+```text
 leetlab/
 ├── 🌐 backend/      # Express API & Prisma Schema
 ├── 🎨 frontend/     # Vite + React UI
-├── 📜 deployment/   # Deployment guides for Vercel & Render
+├── 📜 deployment/   # Deployment guides
 └── 📸 screenshots/  # High-quality UI previews
 ```
 
